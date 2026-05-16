@@ -3,95 +3,277 @@
 @section('title', 'Evaluasi Model')
 
 @section('content')
-<h2 class="text-2xl font-bold mb-6">Evaluasi Model</h2>
+
+<h2 class="text-3xl font-bold mb-6 text-white">
+    Evaluasi Model
+</h2>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <!-- Naïve Bayes -->
-    <div class="bg-gray-800 rounded-xl border border-gray-700 p-5">
-        <h3 class="text-lg font-semibold mb-4 text-blue-400">Naïve Bayes</h3>
-        <div class="mb-4 p-3 bg-gray-700/50 rounded-lg">
-            <p class="text-center text-2xl font-bold">{{ number_format($nbMetrics['accuracy'] * 100, 2) }}%</p>
-            <p class="text-center text-sm text-gray-400">Akurasi</p>
+
+    <!-- ========================= -->
+    <!-- NAIVE BAYES -->
+    <!-- ========================= -->
+    <div class="bg-gray-800 rounded-2xl border border-gray-700 p-6">
+
+        <h3 class="text-xl font-bold mb-5 text-blue-400">
+            Naïve Bayes
+        </h3>
+
+        <!-- Accuracy -->
+        <div class="mb-5 p-5 bg-gray-700/40 rounded-xl">
+
+            <p class="text-center text-4xl font-bold text-white">
+                {{ number_format($nbMetrics['accuracy'], 2) }}%
+            </p>
+
+            <p class="text-center text-gray-400 mt-1">
+                Accuracy
+            </p>
+
         </div>
+
+        <!-- Metrics -->
         <table class="w-full text-sm">
+
             <thead class="bg-gray-900">
+
                 <tr>
-                    <th class="px-3 py-2 text-left">Kelas</th>
-                    <th class="px-3 py-2 text-center">Precision</th>
-                    <th class="px-3 py-2 text-center">Recall</th>
-                    <th class="px-3 py-2 text-center">F1-Score</th>
+
+                    <th class="px-4 py-3 text-left">
+                        Metric
+                    </th>
+
+                    <th class="px-4 py-3 text-center">
+                        Value
+                    </th>
+
                 </tr>
+
             </thead>
-            <tbody>
-                @foreach($nbMetrics['by_class'] as $class => $m)
-                <tr class="border-t border-gray-700">
-                    <td class="px-3 py-2 capitalize">{{ $class }}</td>
-                    <td class="px-3 py-2 text-center">{{ number_format($m['precision'] * 100, 2) }}%</td>
-                    <td class="px-3 py-2 text-center">{{ number_format($m['recall'] * 100, 2) }}%</td>
-                    <td class="px-3 py-2 text-center">{{ number_format($m['f1'] * 100, 2) }}%</td>
+
+            <tbody class="divide-y divide-gray-700">
+
+                <tr>
+
+                    <td class="px-4 py-3">
+                        Precision
+                    </td>
+
+                    <td class="px-4 py-3 text-center text-cyan-400">
+                        {{ number_format($nbMetrics['precision'], 2) }}%
+                    </td>
+
                 </tr>
-                @endforeach
+
+                <tr>
+
+                    <td class="px-4 py-3">
+                        Recall
+                    </td>
+
+                    <td class="px-4 py-3 text-center text-yellow-400">
+                        {{ number_format($nbMetrics['recall'], 2) }}%
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td class="px-4 py-3">
+                        F1-Score
+                    </td>
+
+                    <td class="px-4 py-3 text-center text-pink-400">
+                        {{ number_format($nbMetrics['f1_score'], 2) }}%
+                    </td>
+
+                </tr>
+
             </tbody>
+
         </table>
 
-        <h4 class="font-semibold mt-4 mb-2">Confusion Matrix</h4>
+        <!-- Confusion Matrix -->
+        <h4 class="font-semibold mt-6 mb-3 text-white">
+            Confusion Matrix
+        </h4>
+
         <table class="w-full text-sm text-center">
+
             <tr class="bg-gray-900">
-                <th class="p-2"></th><th class="p-2">Positif</th><th class="p-2">Negatif</th><th class="p-2">Netral</th>
+
+                <th class="p-3"></th>
+
+                <th class="p-3">
+                    Positif
+                </th>
+
+                <th class="p-3">
+                    Negatif
+                </th>
+
+                <th class="p-3">
+                    Netral
+                </th>
+
             </tr>
+
             @foreach(['positif', 'negatif', 'netral'] as $actual)
-            <tr class="border-t border-gray-700">
-                <th class="p-2 bg-gray-900">{{ ucfirst($actual) }}</th>
-                @foreach(['positif', 'negatif', 'netral'] as $pred)
-                <td class="p-2">{{ $nbConfusion[$actual][$pred] ?? 0 }}</td>
-                @endforeach
-            </tr>
+
+                <tr class="border-t border-gray-700">
+
+                    <th class="p-3 bg-gray-900">
+                        {{ ucfirst($actual) }}
+                    </th>
+
+                    @foreach(['positif', 'negatif', 'netral'] as $pred)
+
+                        <td class="p-3">
+                            {{ $nbConfusion[$actual][$pred] ?? 0 }}
+                        </td>
+
+                    @endforeach
+
+                </tr>
+
             @endforeach
+
         </table>
+
     </div>
 
+    <!-- ========================= -->
     <!-- SVM -->
-    <div class="bg-gray-800 rounded-xl border border-gray-700 p-5">
-        <h3 class="text-lg font-semibold mb-4 text-indigo-400">SVM</h3>
-        <div class="mb-4 p-3 bg-gray-700/50 rounded-lg">
-            <p class="text-center text-2xl font-bold">{{ number_format($svmMetrics['accuracy'] * 100, 2) }}%</p>
-            <p class="text-center text-sm text-gray-400">Akurasi</p>
+    <!-- ========================= -->
+    <div class="bg-gray-800 rounded-2xl border border-gray-700 p-6">
+
+        <h3 class="text-xl font-bold mb-5 text-indigo-400">
+            SVM
+        </h3>
+
+        <!-- Accuracy -->
+        <div class="mb-5 p-5 bg-gray-700/40 rounded-xl">
+
+            <p class="text-center text-4xl font-bold text-white">
+                {{ number_format($svmMetrics['accuracy'], 2) }}%
+            </p>
+
+            <p class="text-center text-gray-400 mt-1">
+                Accuracy
+            </p>
+
         </div>
+
+        <!-- Metrics -->
         <table class="w-full text-sm">
+
             <thead class="bg-gray-900">
+
                 <tr>
-                    <th class="px-3 py-2 text-left">Kelas</th>
-                    <th class="px-3 py-2 text-center">Precision</th>
-                    <th class="px-3 py-2 text-center">Recall</th>
-                    <th class="px-3 py-2 text-center">F1-Score</th>
+
+                    <th class="px-4 py-3 text-left">
+                        Metric
+                    </th>
+
+                    <th class="px-4 py-3 text-center">
+                        Value
+                    </th>
+
                 </tr>
+
             </thead>
-            <tbody>
-                @foreach($svmMetrics['by_class'] as $class => $m)
-                <tr class="border-t border-gray-700">
-                    <td class="px-3 py-2 capitalize">{{ $class }}</td>
-                    <td class="px-3 py-2 text-center">{{ number_format($m['precision'] * 100, 2) }}%</td>
-                    <td class="px-3 py-2 text-center">{{ number_format($m['recall'] * 100, 2) }}%</td>
-                    <td class="px-3 py-2 text-center">{{ number_format($m['f1'] * 100, 2) }}%</td>
+
+            <tbody class="divide-y divide-gray-700">
+
+                <tr>
+
+                    <td class="px-4 py-3">
+                        Precision
+                    </td>
+
+                    <td class="px-4 py-3 text-center text-cyan-400">
+                        {{ number_format($svmMetrics['precision'], 2) }}%
+                    </td>
+
                 </tr>
-                @endforeach
+
+                <tr>
+
+                    <td class="px-4 py-3">
+                        Recall
+                    </td>
+
+                    <td class="px-4 py-3 text-center text-yellow-400">
+                        {{ number_format($svmMetrics['recall'], 2) }}%
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td class="px-4 py-3">
+                        F1-Score
+                    </td>
+
+                    <td class="px-4 py-3 text-center text-pink-400">
+                        {{ number_format($svmMetrics['f1_score'], 2) }}%
+                    </td>
+
+                </tr>
+
             </tbody>
+
         </table>
 
-        <h4 class="font-semibold mt-4 mb-2">Confusion Matrix</h4>
+        <!-- Confusion Matrix -->
+        <h4 class="font-semibold mt-6 mb-3 text-white">
+            Confusion Matrix
+        </h4>
+
         <table class="w-full text-sm text-center">
+
             <tr class="bg-gray-900">
-                <th class="p-2"></th><th class="p-2">Positif</th><th class="p-2">Negatif</th><th class="p-2">Netral</th>
+
+                <th class="p-3"></th>
+
+                <th class="p-3">
+                    Positif
+                </th>
+
+                <th class="p-3">
+                    Negatif
+                </th>
+
+                <th class="p-3">
+                    Netral
+                </th>
+
             </tr>
+
             @foreach(['positif', 'negatif', 'netral'] as $actual)
-            <tr class="border-t border-gray-700">
-                <th class="p-2 bg-gray-900">{{ ucfirst($actual) }}</th>
-                @foreach(['positif', 'negatif', 'netral'] as $pred)
-                <td class="p-2">{{ $svmConfusion[$actual][$pred] ?? 0 }}</td>
-                @endforeach
-            </tr>
+
+                <tr class="border-t border-gray-700">
+
+                    <th class="p-3 bg-gray-900">
+                        {{ ucfirst($actual) }}
+                    </th>
+
+                    @foreach(['positif', 'negatif', 'netral'] as $pred)
+
+                        <td class="p-3">
+                            {{ $svmConfusion[$actual][$pred] ?? 0 }}
+                        </td>
+
+                    @endforeach
+
+                </tr>
+
             @endforeach
+
         </table>
+
     </div>
+
 </div>
+
 @endsection

@@ -6,27 +6,20 @@ use Illuminate\Http\Request;
 
 class DatasetController extends Controller
 {
-    // =========================
-    // UPLOAD DATASET
-    // =========================
-    public function upload(
-        Request $request
-    ) {
-
+    public function upload(Request $request)
+    {
         $request->validate([
-            'file' => 'required|mimes:csv,txt'
+            'file' => 'required|file|mimes:csv,xlsx,xls,txt'
         ]);
 
-        $file =
-            $request->file('file');
+        $file = $request->file('file');
 
         // =========================
-        // FOLDER DATASET FLASK
+        // FOLDER DATASET PYTHON
         // =========================
-        $destination =
-            base_path(
-                '../python-api/dataset'
-            );
+        $destination = base_path(
+            '../python-api/dataset'
+        );
 
         // =========================
         // BUAT FOLDER
@@ -43,53 +36,65 @@ class DatasetController extends Controller
         // =========================
         // HAPUS DATASET LAMA
         // =========================
-        $oldDataset =
-            $destination .
-            '/dataset.csv';
+        $oldFiles = [
 
-        if (file_exists($oldDataset)) {
-
-            unlink($oldDataset);
-
-        }
-
-        // =========================
-        // HAPUS MODEL LAMA
-        // =========================
-        $models = [
-
-            base_path(
-                '../python-api/models/nb_model.pkl'
-            ),
-
-            base_path(
-                '../python-api/models/svm_model.pkl'
-            )
+            $destination . '/dataset.csv',
+            $destination . '/dataset.xlsx',
+            $destination . '/dataset.xls'
 
         ];
 
-        foreach ($models as $model) {
+        foreach ($oldFiles as $oldFile) {
 
-            if (file_exists($model)) {
+            if (file_exists($oldFile)) {
 
-                unlink($model);
+                unlink($oldFile);
 
             }
         }
 
         // =========================
-        // SIMPAN DATASET BARU
+        // HAPUS HASIL PREPROCESSING
+        // =========================
+        $preprocessFile =
+            $destination .
+            '/preprocessing_result.csv';
+
+        if (file_exists($preprocessFile)) {
+
+            unlink($preprocessFile);
+
+        }
+
+        // =========================
+        // EXTENSION FILE
+        // =========================
+        $extension =
+            $file->getClientOriginalExtension();
+
+        // =========================
+        // SIMPAN FILE ASLI
         // =========================
         $file->move(
             $destination,
-            'dataset.csv'
+            'dataset.' . $extension
+        );
+
+        // =========================
+        // AUTO PREPROCESSING
+        // =========================
+        pclose(
+            popen(
+                'start /B python ../python-api/preprocess_dataset.py',
+                'r'
+            )
         );
 
         return redirect()
             ->route('dashboard')
             ->with(
                 'success',
-                'Dataset baru berhasil diupload. Silakan training ulang model.'
+                'Dataset berhasil diupload.'
             );
     }
 }

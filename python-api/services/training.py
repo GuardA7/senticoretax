@@ -1,210 +1,271 @@
+import os
+import json
+import joblib
 import pandas as pd
 
-import joblib
+from sklearn.feature_extraction.text import TfidfVectorizer
 
-from sklearn.pipeline import Pipeline
+from sklearn.naive_bayes import MultinomialNB
 
-from sklearn.feature_extraction.text import (
-    TfidfVectorizer
-)
-
-from sklearn.naive_bayes import (
-    MultinomialNB
-)
-
-from sklearn.svm import (
-    LinearSVC
-)
+from sklearn.svm import LinearSVC
 
 from sklearn.model_selection import (
     train_test_split
 )
 
 from sklearn.metrics import (
-    accuracy_score
-)
 
-from preprocessing import preprocess_text
+    accuracy_score,
+
+    precision_score,
+
+    recall_score,
+
+    f1_score
+
+)
 
 # =========================
 # LOAD DATASET
 # =========================
-print("📖 Membaca dataset...")
+xlsx_path = 'dataset/dataset.xlsx'
 
-df = pd.read_csv(
-    '../dataset/dataset.csv'
-)
+xls_path = 'dataset/dataset.xls'
 
-# =========================
-# CEK KOLOM
-# =========================
-print(df.columns)
+csv_path = 'dataset/dataset.csv'
 
 # =========================
-# HAPUS DATA KOSONG
+# CEK FILE
+# =========================
+if os.path.exists(xlsx_path):
+
+    print('📄 Membaca dataset.xlsx')
+
+    df = pd.read_excel(xlsx_path)
+
+elif os.path.exists(xls_path):
+
+    print('📄 Membaca dataset.xls')
+
+    df = pd.read_excel(xls_path)
+
+elif os.path.exists(csv_path):
+
+    print('📄 Membaca dataset.csv')
+
+    df = pd.read_csv(csv_path)
+
+else:
+
+    raise FileNotFoundError(
+        'Dataset tidak ditemukan'
+    )
+
+# =========================
+# RAPIIKAN HEADER
+# =========================
+df.columns = df.columns.str.strip()
+
+# =========================
+# HAPUS DATA NULL
 # =========================
 df = df.dropna(
     subset=['content', 'labelling']
 )
 
 # =========================
-# NORMALISASI LABEL
+# DATA
 # =========================
-df['labelling'] = df[
-    'labelling'
-].astype(str)
+X = df['content'].astype(str)
 
-df['labelling'] = df[
-    'labelling'
-].str.lower()
-
-df['labelling'] = df[
-    'labelling'
-].str.strip()
-
-df['labelling'] = df[
-    'labelling'
-].str.replace('.', '')
-
-df['labelling'] = df[
-    'labelling'
-].str.replace(',', '')
-
-# =========================
-# FILTER LABEL VALID
-# =========================
-valid_labels = [
-    'positif',
-    'negatif',
-    'netral'
-]
-
-df = df[
-    df['labelling'].isin(valid_labels)
-]
-
-print(
-    "Jumlah data:",
-    len(df)
-)
-
-# =========================
-# PREPROCESSING
-# =========================
-print("🧹 Preprocessing teks...")
-
-df['processed'] = df[
-    'content'
-].astype(str).apply(
-    preprocess_text
-)
-
-# =========================
-# FEATURE & LABEL
-# =========================
-X = df['processed']
-
-y = df['labelling']
+y = df['labelling'].astype(str)
 
 # =========================
 # SPLIT DATA
 # =========================
-print("✂️ Split dataset...")
-
 X_train, X_test, y_train, y_test = train_test_split(
+
     X,
+
     y,
+
     test_size=0.2,
-    random_state=42,
-    stratify=y
+
+    random_state=42
+
+)
+
+# =========================
+# TF-IDF
+# =========================
+vectorizer = TfidfVectorizer()
+
+X_train_vector = vectorizer.fit_transform(
+    X_train
+)
+
+X_test_vector = vectorizer.transform(
+    X_test
 )
 
 # =========================
 # NAIVE BAYES
 # =========================
-print("🤖 Training Naive Bayes...")
+print('🚀 Training Naive Bayes...')
 
-nb_pipeline = Pipeline([
-    (
-        'tfidf',
-        TfidfVectorizer(
-            max_features=5000,
-            ngram_range=(1,2),
-            min_df=2,
-            max_df=0.9
-        )
-    ),
-    (
-        'clf',
-        MultinomialNB()
-    )
-])
+nb_model = MultinomialNB()
 
-nb_pipeline.fit(
-    X_train,
+nb_model.fit(
+    X_train_vector,
     y_train
 )
 
-nb_pred = nb_pipeline.predict(
-    X_test
+nb_prediction = nb_model.predict(
+    X_test_vector
 )
 
+# =========================
+# METRIK NB
+# =========================
 nb_accuracy = accuracy_score(
     y_test,
-    nb_pred
+    nb_prediction
 )
 
-print(
-    f'NB Accuracy: {nb_accuracy:.2%}'
+nb_precision = precision_score(
+    y_test,
+    nb_prediction,
+    average='weighted'
 )
 
-joblib.dump(
-    nb_pipeline,
-    '../models/nb_model.pkl'
+nb_recall = recall_score(
+    y_test,
+    nb_prediction,
+    average='weighted'
+)
+
+nb_f1 = f1_score(
+    y_test,
+    nb_prediction,
+    average='weighted'
 )
 
 # =========================
 # SVM
 # =========================
-print("🤖 Training SVM...")
+print('🚀 Training SVM...')
 
-svm_pipeline = Pipeline([
-    (
-        'tfidf',
-        TfidfVectorizer(
-            max_features=5000,
-            ngram_range=(1,2),
-            min_df=2,
-            max_df=0.9
-        )
-    ),
-    (
-        'clf',
-        LinearSVC()
-    )
-])
+svm_model = LinearSVC()
 
-svm_pipeline.fit(
-    X_train,
+svm_model.fit(
+    X_train_vector,
     y_train
 )
 
-svm_pred = svm_pipeline.predict(
-    X_test
+svm_prediction = svm_model.predict(
+    X_test_vector
 )
 
+# =========================
+# METRIK SVM
+# =========================
 svm_accuracy = accuracy_score(
     y_test,
-    svm_pred
+    svm_prediction
 )
 
-print(
-    f'SVM Accuracy: {svm_accuracy:.2%}'
+svm_precision = precision_score(
+    y_test,
+    svm_prediction,
+    average='weighted'
+)
+
+svm_recall = recall_score(
+    y_test,
+    svm_prediction,
+    average='weighted'
+)
+
+svm_f1 = f1_score(
+    y_test,
+    svm_prediction,
+    average='weighted'
+)
+
+# =========================
+# BUAT FOLDER MODEL
+# =========================
+if not os.path.exists('models'):
+
+    os.makedirs('models')
+
+# =========================
+# SIMPAN MODEL
+# =========================
+joblib.dump(
+    nb_model,
+    'models/nb_model.pkl'
 )
 
 joblib.dump(
-    svm_pipeline,
-    '../models/svm_model.pkl'
+    svm_model,
+    'models/svm_model.pkl'
 )
 
-print("✅ Training selesai")
+joblib.dump(
+    vectorizer,
+    'models/vectorizer.pkl'
+)
+
+# =========================
+# SIMPAN HASIL EVALUASI
+# =========================
+accuracy = {
+
+    'naive_bayes': {
+
+        'accuracy':
+            round(nb_accuracy * 100, 2),
+
+        'precision':
+            round(nb_precision * 100, 2),
+
+        'recall':
+            round(nb_recall * 100, 2),
+
+        'f1_score':
+            round(nb_f1 * 100, 2)
+
+    },
+
+    'svm': {
+
+        'accuracy':
+            round(svm_accuracy * 100, 2),
+
+        'precision':
+            round(svm_precision * 100, 2),
+
+        'recall':
+            round(svm_recall * 100, 2),
+
+        'f1_score':
+            round(svm_f1 * 100, 2)
+
+    }
+
+}
+
+with open(
+    'models/accuracy.json',
+    'w'
+) as f:
+
+    json.dump(
+        accuracy,
+        f
+    )
+
+print(accuracy)
+
+print('✅ Training selesai')

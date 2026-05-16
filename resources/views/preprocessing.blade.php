@@ -4,45 +4,45 @@
 
 @section('content')
 
-<h2 class="text-2xl font-bold mb-6">
+<h2 class="text-3xl font-bold mb-6 text-white">
     Hasil Preprocessing
 </h2>
 
-<div class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+<div class="bg-gray-800 border border-gray-700 rounded-2xl overflow-hidden">
 
     <div class="overflow-x-auto">
 
-        <table class="w-full text-sm">
+        <table class="min-w-full text-sm text-gray-200">
 
-            <thead class="bg-gray-900">
+            <thead class="bg-gray-900 text-white sticky top-0">
 
                 <tr>
 
-                    <th class="px-4 py-3 text-left">
+                    <th class="px-4 py-4 text-left min-w-[120px]">
                         Username
                     </th>
 
-                    <th class="px-4 py-3 text-left">
+                    <th class="px-4 py-4 text-left min-w-[350px]">
                         Original
                     </th>
 
-                    <th class="px-4 py-3 text-left">
+                    <th class="px-4 py-4 text-left min-w-[300px]">
                         Cleaning
                     </th>
 
-                    <th class="px-4 py-3 text-left">
+                    <th class="px-4 py-4 text-left min-w-[300px]">
                         Tokenizing
                     </th>
 
-                    <th class="px-4 py-3 text-left">
+                    <th class="px-4 py-4 text-left min-w-[300px]">
                         Stopword
                     </th>
 
-                    <th class="px-4 py-3 text-left">
+                    <th class="px-4 py-4 text-left min-w-[300px]">
                         Stemming
                     </th>
 
-                    <th class="px-4 py-3 text-left">
+                    <th class="px-4 py-4 text-left min-w-[300px]">
                         Final
                     </th>
 
@@ -54,34 +54,53 @@
 
                 @forelse($results as $row)
 
-                    <tr class="hover:bg-gray-700/40">
+                    <tr class="hover:bg-gray-700/40 align-top">
 
-                        <td class="px-4 py-3">
+                        {{-- USERNAME --}}
+                        <td class="px-4 py-4 whitespace-normal">
                             {{ $row['username'] }}
                         </td>
 
-                        <td class="px-4 py-3">
-                            {{ $row['content'] }}
+                        {{-- ORIGINAL --}}
+                        <td class="px-4 py-4">
+                            <div class="max-h-40 overflow-y-auto whitespace-pre-wrap break-words">
+                                {{ $row['content'] }}
+                            </div>
                         </td>
 
-                        <td class="px-4 py-3">
-                            {{ $row['cleaning'] }}
+                        {{-- CLEANING --}}
+                        <td class="px-4 py-4 text-cyan-300">
+                            <div class="max-h-40 overflow-y-auto whitespace-pre-wrap break-words">
+                                {{ $row['cleaning'] }}
+                            </div>
                         </td>
 
-                        <td class="px-4 py-3">
-                            {{ $row['tokenizing'] }}
+                        {{-- TOKENIZING --}}
+                        <td class="px-4 py-4 text-yellow-300">
+                            <div class="max-h-40 overflow-y-auto whitespace-pre-wrap break-words">
+                                {{ $row['tokenizing'] }}
+                            </div>
                         </td>
 
-                        <td class="px-4 py-3">
-                            {{ $row['stopword'] }}
+                        {{-- STOPWORD --}}
+                        <td class="px-4 py-4 text-pink-300">
+                            <div class="max-h-40 overflow-y-auto whitespace-pre-wrap break-words">
+                                {{ $row['stopword'] }}
+                            </div>
                         </td>
 
-                        <td class="px-4 py-3">
-                            {{ $row['stemming'] }}
+                        {{-- STEMMING --}}
+                        <td class="px-4 py-4 text-orange-300">
+                            <div class="max-h-40 overflow-y-auto whitespace-pre-wrap break-words">
+                                {{ $row['stemming'] }}
+                            </div>
                         </td>
 
-                        <td class="px-4 py-3 text-green-400">
-                            {{ $row['final'] }}
+                        {{-- FINAL --}}
+                        <td class="px-4 py-4 text-green-400 font-medium">
+                            <div class="max-h-40 overflow-y-auto whitespace-pre-wrap break-words">
+                                {{ $row['final'] }}
+                            </div>
                         </td>
 
                     </tr>
@@ -91,7 +110,7 @@
                     <tr>
 
                         <td colspan="7"
-                            class="px-4 py-8 text-center text-gray-500">
+                            class="px-4 py-10 text-center text-gray-400">
 
                             Dataset belum tersedia
 

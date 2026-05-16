@@ -7,67 +7,88 @@ class EvaluationController extends Controller
     public function index()
     {
         // =========================
-        // METRIK NB
+        // DEFAULT
         // =========================
-        $nbMetrics = [
-            'accuracy' => 0.8606,
+        $nbMetrics = [];
 
-            'by_class' => [
-
-                'positif' => [
-                    'precision' => 0.89,
-                    'recall' => 0.91,
-                    'f1' => 0.90
-                ],
-
-                'negatif' => [
-                    'precision' => 0.84,
-                    'recall' => 0.81,
-                    'f1' => 0.82
-                ],
-
-                'netral' => [
-                    'precision' => 0.78,
-                    'recall' => 0.75,
-                    'f1' => 0.76
-                ]
-
-            ]
-        ];
+        $svmMetrics = [];
 
         // =========================
-        // METRIK SVM
+        // FILE AKURASI
         // =========================
-        $svmMetrics = [
-            'accuracy' => 0.9012,
-
-            'by_class' => [
-
-                'positif' => [
-                    'precision' => 0.93,
-                    'recall' => 0.92,
-                    'f1' => 0.92
-                ],
-
-                'negatif' => [
-                    'precision' => 0.88,
-                    'recall' => 0.86,
-                    'f1' => 0.87
-                ],
-
-                'netral' => [
-                    'precision' => 0.82,
-                    'recall' => 0.80,
-                    'f1' => 0.81
-                ]
-
-            ]
-        ];
+        $path =
+            'C:/senticoretax/python-api/models/accuracy.json';
 
         // =========================
-        // CONFUSION MATRIX NB
+        // CEK FILE
+        // =========================
+        if (file_exists($path)) {
+
+            $data = json_decode(
+                file_get_contents($path),
+                true
+            );
+
+            // =========================
+            // NAIVE BAYES
+            // =========================
+            $nbMetrics = [
+
+                'accuracy' =>
+
+                    $data['naive_bayes']['accuracy']
+                    ?? 0,
+
+                'precision' =>
+
+                    $data['naive_bayes']['precision']
+                    ?? 0,
+
+                'recall' =>
+
+                    $data['naive_bayes']['recall']
+                    ?? 0,
+
+                'f1_score' =>
+
+                    $data['naive_bayes']['f1_score']
+                    ?? 0
+
+            ];
+
+            // =========================
+            // SVM
+            // =========================
+            $svmMetrics = [
+
+                'accuracy' =>
+
+                    $data['svm']['accuracy']
+                    ?? 0,
+
+                'precision' =>
+
+                    $data['svm']['precision']
+                    ?? 0,
+
+                'recall' =>
+
+                    $data['svm']['recall']
+                    ?? 0,
+
+                'f1_score' =>
+
+                    $data['svm']['f1_score']
+                    ?? 0
+
+            ];
+        }
+
+        // =========================
+        // CONFUSION MATRIX DUMMY
         // =========================
         $nbConfusion = [
+
             'positif' => [
                 'positif' => 500,
                 'negatif' => 20,
@@ -85,12 +106,11 @@ class EvaluationController extends Controller
                 'negatif' => 18,
                 'netral' => 150
             ]
+
         ];
 
-        // =========================
-        // CONFUSION MATRIX SVM
-        // =========================
         $svmConfusion = [
+
             'positif' => [
                 'positif' => 520,
                 'negatif' => 10,
@@ -108,6 +128,7 @@ class EvaluationController extends Controller
                 'negatif' => 12,
                 'netral' => 160
             ]
+
         ];
 
         return view(

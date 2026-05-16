@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\FlaskApiService;
-
 class PreprocessingController extends Controller
 {
-    public function index(
-        FlaskApiService $flask
-    ) {
-
+    public function index()
+    {
         // =========================
-        // DATASET
+        // PATH JSON
         // =========================
-        $path = base_path(
-            '../python-api/dataset/dataset.csv'
-        );
+        $path =
+            'C:/senticoretax/python-api/dataset/preprocessing_result.json';
 
         $results = [];
 
@@ -24,81 +19,21 @@ class PreprocessingController extends Controller
         // =========================
         if (file_exists($path)) {
 
+            $json = file_get_contents($path);
+
+            $results = json_decode(
+                $json,
+                true
+            ) ?? [];
+
             // =========================
-            // BACA CSV
+            // BATASI DATA
             // =========================
-            $rows = array_map(
-                'str_getcsv',
-                file($path)
+            $results = array_slice(
+                $results,
+                0,
+                100
             );
-
-            // =========================
-            // HAPUS HEADER
-            // =========================
-            $header = array_shift($rows);
-
-            // =========================
-            // LOOP DATA
-            // =========================
-            foreach ($rows as $row) {
-
-                $username =
-                    $row[0] ?? '';
-
-                $content =
-                    $row[1] ?? '';
-
-                $label =
-                    $row[2] ?? '';
-
-                // =========================
-                // PREPROCESS FLASK
-                // =========================
-                $preprocess =
-                    $flask->preprocessing(
-                        $content
-                    );
-
-                $results[] = [
-
-                    'username' =>
-                        $username,
-
-                    'content' =>
-                        $content,
-
-                    'label' =>
-                        $label,
-
-                    'casefolding' =>
-                        $preprocess['casefolding'] ?? '',
-
-                    'cleaning' =>
-                        $preprocess['cleaning'] ?? '',
-
-                    'tokenizing' =>
-                        implode(
-                            ', ',
-                            $preprocess['tokenizing'] ?? []
-                        ),
-
-                    'stopword' =>
-                        implode(
-                            ', ',
-                            $preprocess['stopword'] ?? []
-                        ),
-
-                    'stemming' =>
-                        implode(
-                            ', ',
-                            $preprocess['stemming'] ?? []
-                        ),
-
-                    'final' =>
-                        $preprocess['final'] ?? ''
-
-                ];
-            }
         }
 
         return view(

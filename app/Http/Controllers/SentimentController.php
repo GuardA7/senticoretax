@@ -6,16 +6,100 @@ use Illuminate\Http\Request;
 
 use App\Services\FlaskApiService;
 
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
 class SentimentController extends Controller
 {
     // =========================
     // NAIVE BAYES
     // =========================
-    public function naiveBayes()
-    {
-        $accuracy = 0.8606;
+    public function naiveBayes(
+        FlaskApiService $flask
+    ) {
+
+        $accuracy = 0;
 
         $results = [];
+
+        // =========================
+        // FILE AKURASI
+        // =========================
+        $accuracyPath =
+            'C:/senticoretax/python-api/models/accuracy.json';
+
+        // =========================
+        // CEK FILE
+        // =========================
+        if (file_exists($accuracyPath)) {
+
+            $data = json_decode(
+                file_get_contents($accuracyPath),
+                true
+            );
+
+            $accuracy = floatval(
+
+                $data['naive_bayes']['accuracy']
+                ?? 0
+
+            );
+        }
+
+        // =========================
+        // DATASET
+        // =========================
+        $dataset =
+            'C:/senticoretax/python-api/dataset/dataset.xlsx';
+
+        // =========================
+        // CEK DATASET
+        // =========================
+        if (file_exists($dataset)) {
+
+            $spreadsheet =
+                IOFactory::load($dataset);
+
+            $sheet =
+                $spreadsheet->getActiveSheet();
+
+            $rows =
+                $sheet->toArray();
+
+            // =========================
+            // HAPUS HEADER
+            // =========================
+            array_shift($rows);
+
+            // =========================
+            // LOOP DATA
+            // =========================
+            foreach (
+                array_slice($rows, 0, 100)
+                as $row
+            ) {
+
+                $content =
+                    $row[1] ?? '';
+
+                // =========================
+                // PREDIKSI NB
+                // =========================
+                $prediction =
+                    $flask->predictNB(
+                        $content
+                    );
+
+                $results[] = [
+
+                    'content' =>
+                        $content,
+
+                    'result' =>
+                        $prediction['result']
+
+                ];
+            }
+        }
 
         return view(
             'klasifikasi_nb',
@@ -29,11 +113,93 @@ class SentimentController extends Controller
     // =========================
     // SVM
     // =========================
-    public function svm()
-    {
-        $accuracy = 0.9012;
+    public function svm(
+        FlaskApiService $flask
+    ) {
+
+        $accuracy = 0;
 
         $results = [];
+
+        // =========================
+        // FILE AKURASI
+        // =========================
+        $accuracyPath =
+            'C:/senticoretax/python-api/models/accuracy.json';
+
+        // =========================
+        // CEK FILE
+        // =========================
+        if (file_exists($accuracyPath)) {
+
+            $data = json_decode(
+                file_get_contents($accuracyPath),
+                true
+            );
+
+            $accuracy = floatval(
+
+                $data['svm']['accuracy']
+                ?? 0
+
+            );
+        }
+
+        // =========================
+        // DATASET
+        // =========================
+        $dataset =
+            'C:/senticoretax/python-api/dataset/dataset.xlsx';
+
+        // =========================
+        // CEK DATASET
+        // =========================
+        if (file_exists($dataset)) {
+
+            $spreadsheet =
+                IOFactory::load($dataset);
+
+            $sheet =
+                $spreadsheet->getActiveSheet();
+
+            $rows =
+                $sheet->toArray();
+
+            // =========================
+            // HAPUS HEADER
+            // =========================
+            array_shift($rows);
+
+            // =========================
+            // LOOP DATA
+            // =========================
+            foreach (
+                array_slice($rows, 0, 100)
+                as $row
+            ) {
+
+                $content =
+                    $row[1] ?? '';
+
+                // =========================
+                // PREDIKSI SVM
+                // =========================
+                $prediction =
+                    $flask->predictSVM(
+                        $content
+                    );
+
+                $results[] = [
+
+                    'content' =>
+                        $content,
+
+                    'result' =>
+                        $prediction['result']
+
+                ];
+            }
+        }
 
         return view(
             'klasifikasi_svm',
@@ -52,65 +218,67 @@ class SentimentController extends Controller
         FlaskApiService $flask
     ) {
 
+        // =========================
+        // VALIDASI
+        // =========================
         $request->validate([
-            'userName' => 'required',
-            'content' => 'required',
-            'score' => 'required|numeric'
+
+            'userName' =>
+                'required',
+
+            'content' =>
+                'required'
+
         ]);
 
+        // =========================
+        // INPUT USER
+        // =========================
         $userName =
             $request->userName;
 
         $content =
             $request->content;
 
-        $score =
-            $request->score;
-
         // =========================
-        // PREDIKSI NB
+        // PREDIKSI NAIVE BAYES
         // =========================
         $nb =
-            $flask->predictNB($content);
+            $flask->predictNB(
+                $content
+            );
 
         // =========================
         // PREDIKSI SVM
         // =========================
         $svm =
-            $flask->predictSVM($content);
+            $flask->predictSVM(
+                $content
+            );
 
-        return view(
-            'dashboard',
-            [
+        // =========================
+        // SIMPAN SESSION
+        // =========================
+        session([
 
-                // dashboard
-                'total' => 7546,
-                'positif' => 5200,
-                'negatif' => 1500,
-                'netral' => 846,
+            'manualUser' =>
+                $userName,
 
-                // akurasi
-                'nbAccuracy' => 0.8606,
-                'svmAccuracy' => 0.9012,
+            'manualText' =>
+                $content,
 
-                // manual input
-                'manualUser' =>
-                    $userName,
+            'nbResult' =>
+                $nb['result'],
 
-                'manualText' =>
-                    $content,
+            'svmResult' =>
+                $svm['result']
 
-                'manualScore' =>
-                    $score,
+        ]);
 
-                // hasil model
-                'nbResult' =>
-                    $nb['result'],
-
-                'svmResult' =>
-                    $svm['result']
-
-            ]
-        );
+        // =========================
+        // REDIRECT DASHBOARD
+        // =========================
+        return redirect()
+            ->route('dashboard');
     }
 }

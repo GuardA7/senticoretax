@@ -2,68 +2,148 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FlaskApiService;
+
 class ExportController extends Controller
 {
-    // =========================
-    // EXPORT CSV
-    // =========================
-    public function laporan()
-    {
-        $fileName =
-            'laporan-sentimen.csv';
+    public function laporan(
+        FlaskApiService $flask
+    ) {
 
-        $headers = [
+        // =========================
+        // FILE PREPROCESSING
+        // =========================
+        $path =
+            'C:/senticoretax/python-api/dataset/preprocessing_result.json';
 
-            'Content-Type' =>
-                'text/csv',
+        // =========================
+        // CEK FILE
+        // =========================
+        if (!file_exists($path)) {
 
-            'Content-Disposition' =>
-                'attachment; filename="'.$fileName.'"',
+            return back()->with(
+                'error',
+                'Data preprocessing tidak ditemukan'
+            );
+        }
 
-        ];
+        // =========================
+        // LOAD JSON
+        // =========================
+        $json = json_decode(
+            file_get_contents($path),
+            true
+        );
 
-        $callback = function () {
+        // =========================
+        // HEADER EXPORT
+        // =========================
+        $filename =
+            'laporan_sentimen.csv';
 
-            $file =
-                fopen(
-                    'php://output',
-                    'w'
+        header(
+            'Content-Type: text/csv'
+        );
+
+        header(
+            'Content-Disposition: attachment; filename="' . $filename . '"'
+        );
+
+        // =========================
+        // OUTPUT CSV
+        // =========================
+        $output =
+            fopen('php://output', 'w');
+
+        // =========================
+        // HEADER TABLE
+        // =========================
+        fputcsv($output, [
+
+            'Username',
+
+            'Original',
+
+            'Cleaning',
+
+            'Tokenizing',
+
+            'Stopword Removal',
+
+            'Stemming',
+
+            'Final Preprocessing',
+
+            'Naive Bayes',
+
+            'SVM'
+
+        ]);
+
+        // =========================
+        // BATASI EXPORT
+        // =========================
+        foreach (
+            array_slice($json, 0, 500)
+            as $row
+        ) {
+
+            $final =
+                $row['final'] ?? '';
+
+            // =========================
+            // PREDIKSI NB
+            // =========================
+            $nb =
+                $flask->predictNB(
+                    $final
                 );
 
             // =========================
-            // HEADER
+            // PREDIKSI SVM
             // =========================
-            fputcsv($file, [
-
-                'Model',
-                'Accuracy'
-
-            ]);
+            $svm =
+                $flask->predictSVM(
+                    $final
+                );
 
             // =========================
-            // DATA
+            // EXPORT ROW
             // =========================
-            fputcsv($file, [
+            fputcsv($output, [
 
-                'Naive Bayes',
-                '88.12%'
+                $row['username']
+                    ?? '',
+
+                $row['content']
+                    ?? '',
+
+                $row['cleaning']
+                    ?? '',
+
+                $row['tokenizing']
+                    ?? '',
+
+                $row['stopword']
+                    ?? '',
+
+                $row['stemming']
+                    ?? '',
+
+                $row['final']
+                    ?? '',
+
+                $nb['result']
+                    ?? '',
+
+                $svm['result']
+                    ?? ''
 
             ]);
+        }
 
-            fputcsv($file, [
+        fclose($output);
 
-                'SVM',
-                '92.45%'
-
-            ]);
-
-            fclose($file);
-        };
-
-        return response()->stream(
-            $callback,
-            200,
-            $headers
-        );
+        exit;
     }
 }

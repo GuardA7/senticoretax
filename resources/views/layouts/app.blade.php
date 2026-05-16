@@ -82,7 +82,7 @@
         </a>
         <a href="{{ route('eucs') }}" class="flex items-center gap-3 py-2.5 px-3 rounded-lg {{ request()->routeIs('eucs') ? 'bg-gray-700 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white' }} transition-all">
             <span class="material-symbols-outlined text-sm">psychology</span>
-            <span class="text-sm">Analisis EUCS</span>
+            <span class="text-sm">Analisis Kepuasan</span>
         </a>
         <a href="{{ route('perbandingan') }}" class="flex items-center gap-3 py-2.5 px-3 rounded-lg {{ request()->routeIs('perbandingan') ? 'bg-gray-700 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white' }} transition-all">
             <span class="material-symbols-outlined text-sm">compare_arrows</span>
@@ -135,24 +135,51 @@
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
+
         <form action="{{ route('upload.dataset') }}" method="POST" enctype="multipart/form-data">
+
             @csrf
+
             <div class="mb-4">
-                <label class="block text-sm font-medium mb-2">File CSV</label>
-                <input type="file" name="file" accept=".csv" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg" required>
+
+                <label class="block text-sm font-medium mb-2">
+                    File Dataset
+                </label>
+
+                <input
+                    type="file"
+                    name="file"
+                    accept=".csv,.xlsx,.xls"
+                    class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg"
+                    required
+                >
+
                 <p class="text-xs text-gray-400 mt-2">
-                    Format: username, content, score<br>
-                    Contoh: user1,"Aplikasi bagus",5
+                    Format didukung: CSV, XLSX, XLS <br>
+                    Kolom wajib: username, content, score
                 </p>
+
             </div>
+
             <div class="flex gap-3">
-                <button type="button" onclick="closeUploadModal()" class="py-2 px-4 bg-gray-600 rounded-lg text-sm font-semibold hover:bg-gray-700 transition-colors">
+
+                <button
+                    type="button"
+                    onclick="closeUploadModal()"
+                    class="py-2 px-4 bg-gray-600 rounded-lg text-sm font-semibold hover:bg-gray-700 transition-colors"
+                >
                     Batal
                 </button>
-                <button type="submit" class="flex-1 py-2 bg-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors">
-                    Upload
+
+                <button
+                    type="submit"
+                    class="flex-1 py-2 bg-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
+                >
+                    Upload Dataset
                 </button>
+
             </div>
+
         </form>
     </div>
 </div>

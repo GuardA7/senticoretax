@@ -3,192 +3,211 @@
 @section('title', 'Coretax Sentiment - Dashboard')
 
 @section('content')
+
 @if(session('success'))
 
-<div class="mb-5 p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400">
+<div class="mb-4 p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm">
 
     {{ session('success') }}
 
 </div>
 
 @endif
-<div class="flex justify-between items-center mb-6">
+
+<!-- HEADER -->
+<div class="flex justify-between items-center mb-5">
+
     <div>
-        <h2 class="text-2xl font-bold">Dashboard Utama</h2>
-        <p class="text-gray-400 mt-1">Ikhtisar analisis sentimen aplikasi Coretax</p>
-        <span class="inline-flex items-center gap-2 mt-2 px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs">
 
-    <span class="w-2 h-2 rounded-full bg-green-400"></span>
+        <h2 class="text-2xl font-bold text-white">
+            Dashboard Utama
+        </h2>
 
-    Flask API Connected
+        <p class="text-sm text-gray-400 mt-1">
+            Ikhtisar analisis sentimen aplikasi Coretax
+        </p>
 
-</span>
+        <div class="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs">
+
+            <span class="w-2 h-2 rounded-full bg-green-400"></span>
+
+            Flask API Connected
+
+        </div>
+
     </div>
-    <a href="{{ route('export.laporan') }}" class="flex items-center gap-2 px-4 py-2 bg-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors">
-        <span class="material-symbols-outlined text-sm">download</span>
+
+    <!-- EXPORT -->
+    <a
+        href="{{ route('export.laporan') }}"
+        class="flex items-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition text-sm"
+    >
+
+        <span class="material-symbols-outlined text-base">
+            download
+        </span>
+
         Ekspor Laporan
+
     </a>
+
 </div>
 
-<!-- Statistik -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-    <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
-        <div class="flex items-center justify-between mb-3">
-            <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                <span class="material-symbols-outlined text-blue-400">forum</span>
-            </div>
-        </div>
-        <p class="text-sm text-gray-400">Total Ulasan</p>
-        <p class="text-3xl font-bold">{{ number_format($total) }}</p>
+<!-- STATISTIK -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 mb-6">
+
+    <!-- TOTAL -->
+    <div class="bg-gray-800 border border-gray-700 rounded-xl p-5">
+
+        <p class="text-sm text-gray-400 mb-3">
+            Total Ulasan
+        </p>
+
+        <p class="text-4xl font-bold text-white">
+            {{ number_format($total ?? 0) }}
+        </p>
+
     </div>
-    <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
-        <div class="flex items-center justify-between mb-3">
-            <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
-                <span class="material-symbols-outlined text-green-400">sentiment_very_satisfied</span>
-            </div>
-            <span class="text-xs text-green-400">{{ $total > 0 ? round(($positif/$total)*100) : 0 }}%</span>
-        </div>
-        <p class="text-sm text-gray-400">Positif</p>
-        <p class="text-3xl font-bold text-green-400">{{ number_format($positif) }}</p>
+
+    <!-- POSITIF -->
+    <div class="bg-gray-800 border border-gray-700 rounded-xl p-5">
+
+        <p class="text-sm text-gray-400 mb-3">
+            Positif
+        </p>
+
+        <p class="text-4xl font-bold text-green-400">
+            {{ number_format($positif ?? 0) }}
+        </p>
+
     </div>
-    <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
-        <div class="flex items-center justify-between mb-3">
-            <div class="w-10 h-10 bg-yellow-500/20 rounded-lg flex items-center justify-center">
-                <span class="material-symbols-outlined text-yellow-400">sentiment_neutral</span>
-            </div>
-            <span class="text-xs text-yellow-400">{{ $total > 0 ? round(($netral/$total)*100) : 0 }}%</span>
-        </div>
-        <p class="text-sm text-gray-400">Netral</p>
-        <p class="text-3xl font-bold text-yellow-400">{{ number_format($netral) }}</p>
+
+    <!-- NETRAL -->
+    <div class="bg-gray-800 border border-gray-700 rounded-xl p-5">
+
+        <p class="text-sm text-gray-400 mb-3">
+            Netral
+        </p>
+
+        <p class="text-4xl font-bold text-yellow-400">
+            {{ number_format($netral ?? 0) }}
+        </p>
+
     </div>
-    <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
-        <div class="flex items-center justify-between mb-3">
-            <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center">
-                <span class="material-symbols-outlined text-red-400">sentiment_very_dissatisfied</span>
-            </div>
-            <span class="text-xs text-red-400">{{ $total > 0 ? round(($negatif/$total)*100) : 0 }}%</span>
-        </div>
-        <p class="text-sm text-gray-400">Negatif</p>
-        <p class="text-3xl font-bold text-red-400">{{ number_format($negatif) }}</p>
+
+    <!-- NEGATIF -->
+    <div class="bg-gray-800 border border-gray-700 rounded-xl p-5">
+
+        <p class="text-sm text-gray-400 mb-3">
+            Negatif
+        </p>
+
+        <p class="text-4xl font-bold text-red-400">
+            {{ number_format($negatif ?? 0) }}
+        </p>
+
     </div>
+
 </div>
 
-<!-- Grafik -->
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
-        <h3 class="text-lg font-semibold mb-4">Perbandingan Akurasi Model</h3>
-        <div class="space-y-5">
+<!-- CHART -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-5 mb-6">
+
+    <!-- AKURASI -->
+    <div class="bg-gray-800 border border-gray-700 rounded-xl p-5">
+
+        <h3 class="text-xl font-bold mb-5">
+            Perbandingan Akurasi Model
+        </h3>
+
+        <div class="space-y-6">
+
+            <!-- NB -->
             <div>
-                <div class="flex justify-between mb-1">
-                    <span class="text-sm">Naïve Bayes</span>
-                    <span class="text-sm font-mono">{{ number_format($nbAccuracy * 100, 1) }}%</span>
-                </div>
-                <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
-                    <div class="h-full bg-blue-500 rounded-full" style="width: {{ $nbAccuracy * 100 }}%"></div>
-                </div>
-            </div>
-            <div>
-                <div class="flex justify-between mb-1">
-                    <span class="text-sm">SVM</span>
-                    <span class="text-sm font-mono">{{ number_format($svmAccuracy * 100, 1) }}%</span>
-                </div>
-                <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
-                    <div class="h-full bg-indigo-500 rounded-full" style="width: {{ $svmAccuracy * 100 }}%"></div>
-                </div>
-            </div>
-        </div>
-        <div class="mt-5 p-3 bg-gray-700/50 rounded-lg">
-            <p class="text-xs text-gray-300">
-                <span class="font-semibold">💡 Insight:</span>
-                {{ $svmAccuracy >= $nbAccuracy ? 'SVM' : 'Naïve Bayes' }} lebih unggul dengan selisih {{ number_format(abs($svmAccuracy - $nbAccuracy) * 100, 1) }}%.
-            </p>
-        </div>
-    </div>
 
-    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
-        <h3 class="text-lg font-semibold mb-4">Distribusi Sentimen</h3>
-        <canvas id="sentimentChart" class="w-48 h-48 mx-auto"></canvas>
-        <div class="flex justify-center gap-6 mt-4">
-            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-green-500"></div><span class="text-sm">Positif {{ $total > 0 ? round(($positif/$total)*100) : 0 }}%</span></div>
-            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-yellow-500"></div><span class="text-sm">Netral {{ $total > 0 ? round(($netral/$total)*100) : 0 }}%</span></div>
-            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><span class="text-sm">Negatif {{ $total > 0 ? round(($negatif/$total)*100) : 0 }}%</span></div>
-        </div>
-    </div>
-</div>
-@if(isset($manualText))
+                <div class="flex justify-between items-center mb-2">
 
-<div class="mt-8 bg-gray-800 rounded-xl p-6 border border-gray-700">
-
-    <div class="flex items-center justify-between mb-5">
-
-        <div>
-            <h3 class="text-lg font-semibold">
-                Hasil Analisis Manual
-            </h3>
-
-            <p class="text-sm text-gray-400">
-                Prediksi sentimen realtime menggunakan Flask AI
-            </p>
-        </div>
-
-        <div class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold">
-            LIVE
-        </div>
-
-    </div>
-
-    <!-- DATA INPUT -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
-
-        <div class="bg-gray-900 rounded-xl p-4">
-
-            <p class="text-xs text-gray-400 mb-1">
-                Username
-            </p>
-
-            <p class="font-semibold">
-                {{ $manualUser }}
-            </p>
-
-        </div>
-
-        <div class="bg-gray-900 rounded-xl p-4">
-
-            <p class="text-xs text-gray-400 mb-1">
-                Score
-            </p>
-
-            <p class="font-semibold">
-                {{ $manualScore }}
-            </p>
-
-        </div>
-
-        <div class="bg-gray-900 rounded-xl p-4">
-
-            <p class="text-xs text-gray-400 mb-1">
-                Label Otomatis
-            </p>
-
-            <p class="font-semibold">
-
-                @if($manualScore >= 4)
-
-                    <span class="text-green-400">
-                        Positif
+                    <span class="text-base">
+                        Naïve Bayes
                     </span>
 
-                @elseif($manualScore == 3)
+                    <span class="text-base font-bold text-blue-400">
 
-                    <span class="text-yellow-400">
-                        Netral
+                        {{ number_format($nbAccuracy ?? 0, 2) }}%
+
                     </span>
+
+                </div>
+
+                <div class="w-full h-3 bg-gray-700 rounded-full overflow-hidden">
+
+                    <div
+                        class="h-full bg-blue-500 rounded-full transition-all duration-700"
+                        style="width: {{ min($nbAccuracy, 100) }}%"
+                    ></div>
+
+                </div>
+
+            </div>
+
+            <!-- SVM -->
+            <div>
+
+                <div class="flex justify-between items-center mb-2">
+
+                    <span class="text-base">
+                        SVM
+                    </span>
+
+                    <span class="text-base font-bold text-indigo-400">
+
+                        {{ number_format($svmAccuracy ?? 0, 2) }}%
+
+                    </span>
+
+                </div>
+
+                <div class="w-full h-3 bg-gray-700 rounded-full overflow-hidden">
+
+                    <div
+                        class="h-full bg-indigo-500 rounded-full transition-all duration-700"
+                        style="width: {{ min($svmAccuracy, 100) }}%"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- KESIMPULAN -->
+        <div class="mt-6 p-4 rounded-xl bg-gray-900 border border-gray-700">
+
+            <p class="text-sm text-gray-300 leading-relaxed">
+
+                @if(($svmAccuracy ?? 0) > ($nbAccuracy ?? 0))
+
+                    Model
+                    <span class="text-indigo-400 font-bold">
+                        SVM
+                    </span>
+
+                    memiliki performa lebih baik dibanding
+                    Naïve Bayes.
+
+                @elseif(($svmAccuracy ?? 0) < ($nbAccuracy ?? 0))
+
+                    Model
+                    <span class="text-blue-400 font-bold">
+                        Naïve Bayes
+                    </span>
+
+                    memiliki performa lebih baik dibanding
+                    SVM.
 
                 @else
 
-                    <span class="text-red-400">
-                        Negatif
-                    </span>
+                    Kedua model memiliki performa yang sama.
 
                 @endif
 
@@ -198,44 +217,158 @@
 
     </div>
 
-    <!-- ULASAN -->
-    <div class="mb-5">
+    <!-- DISTRIBUSI -->
+    <div class="bg-gray-800 border border-gray-700 rounded-xl p-5">
 
-        <p class="text-sm text-gray-400 mb-2">
-            Ulasan
-        </p>
+        <h3 class="text-xl font-bold mb-5">
+            Distribusi Sentimen
+        </h3>
 
-        <div class="bg-gray-900 rounded-xl p-4">
-            {{ $manualText }}
+        <div class="flex justify-center">
+
+            <div class="w-[240px]">
+
+                <canvas id="sentimentChart"></canvas>
+
+            </div>
+
+        </div>
+
+        <!-- LEGEND -->
+        <div class="flex justify-center gap-6 mt-5 flex-wrap">
+
+            <div class="flex items-center gap-2">
+
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+
+                <span class="text-sm">
+
+                    Positif
+                    ({{ number_format($positifPercent ?? 0, 1) }}%)
+
+                </span>
+
+            </div>
+
+            <div class="flex items-center gap-2">
+
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+
+                <span class="text-sm">
+
+                    Netral
+                    ({{ number_format($netralPercent ?? 0, 1) }}%)
+
+                </span>
+
+            </div>
+
+            <div class="flex items-center gap-2">
+
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+
+                <span class="text-sm">
+
+                    Negatif
+                    ({{ number_format($negatifPercent ?? 0, 1) }}%)
+
+                </span>
+
+            </div>
+
         </div>
 
     </div>
 
-    <!-- HASIL MODEL -->
+</div>
+
+<!-- HASIL MANUAL -->
+@if(isset($manualText))
+
+<div class="bg-gray-800 border border-gray-700 rounded-xl p-5 mb-6">
+
+    <div class="flex items-center justify-between mb-5">
+
+        <div>
+
+            <h3 class="text-xl font-bold">
+                Hasil Analisis Manual
+            </h3>
+
+            <p class="text-sm text-gray-400 mt-1">
+                Prediksi realtime menggunakan AI
+            </p>
+
+        </div>
+
+        <div class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold">
+
+            LIVE ANALYSIS
+
+        </div>
+
+    </div>
+
+    <!-- USER -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+
+        <div class="bg-gray-900 rounded-xl p-4">
+
+            <p class="text-sm text-gray-400 mb-2">
+                Username
+            </p>
+
+            <p class="text-lg font-semibold">
+                {{ $manualUser }}
+            </p>
+
+        </div>
+
+        <div class="bg-gray-900 rounded-xl p-4">
+
+            <p class="text-sm text-gray-400 mb-2">
+                Status
+            </p>
+
+            <p class="text-lg font-semibold text-green-400">
+                Berhasil Diproses
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ULASAN -->
+    <div class="bg-gray-900 rounded-xl p-4 mb-5">
+
+        <p class="text-sm text-gray-400 mb-2">
+            Ulasan Pengguna
+        </p>
+
+        <p class="text-sm leading-relaxed">
+            {{ $manualText }}
+        </p>
+
+    </div>
+
+    <!-- HASIL -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
         <!-- NB -->
         <div class="bg-blue-500/10 border border-blue-500/20 rounded-xl p-5">
 
-            <div class="flex items-center justify-between mb-3">
+            <h4 class="text-lg font-bold text-blue-400 mb-3">
+                Naïve Bayes
+            </h4>
 
-                <h4 class="font-semibold">
-                    Naïve Bayes
-                </h4>
+            <p class="text-3xl font-bold mb-2">
 
-                <span class="text-xs px-2 py-1 rounded-full bg-blue-500/20 text-blue-400">
-                    TF-IDF
-                </span>
+                {{ ucfirst($nbResult) }}
 
-            </div>
-
-            <p class="text-3xl font-bold text-blue-400 mb-2">
-                {{ ucfirst($nbResult['prediction']) }}
             </p>
 
             <p class="text-sm text-gray-300">
-                Confidence:
-                {{ $nbResult['confidence'] }}%
+                Prediksi menggunakan algoritma Naïve Bayes.
             </p>
 
         </div>
@@ -243,24 +376,18 @@
         <!-- SVM -->
         <div class="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-5">
 
-            <div class="flex items-center justify-between mb-3">
+            <h4 class="text-lg font-bold text-indigo-400 mb-3">
+                SVM
+            </h4>
 
-                <h4 class="font-semibold">
-                    SVM
-                </h4>
+            <p class="text-3xl font-bold mb-2">
 
-                <span class="text-xs px-2 py-1 rounded-full bg-indigo-500/20 text-indigo-400">
-                    LinearSVC
-                </span>
+                {{ ucfirst($svmResult) }}
 
-            </div>
-
-            <p class="text-3xl font-bold text-indigo-400 mb-2">
-                {{ ucfirst($svmResult['prediction']) }}
             </p>
 
             <p class="text-sm text-gray-300">
-                Support Vector Machine Prediction
+                Prediksi menggunakan Support Vector Machine.
             </p>
 
         </div>
@@ -270,25 +397,211 @@
 </div>
 
 @endif
-@if($total == 0 && !isset($manualText))
-<div class="mt-8 p-8 bg-gray-800 rounded-xl border border-gray-700 text-center">
-    <span class="material-symbols-outlined text-5xl text-gray-500">inbox</span>
-    <p class="text-gray-400 mt-2">Belum ada data. Upload dataset atau input ulasan manual.</p>
-</div>
-@endif
 
+<!-- FLOAT BUTTON -->
+<button
+    onclick="openManualModal()"
+    class="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-blue-600 hover:bg-blue-700 shadow-2xl flex items-center justify-center z-50 transition-all duration-300 hover:scale-110"
+>
+
+    <span class="material-symbols-outlined text-white text-3xl">
+        edit
+    </span>
+
+</button>
+
+<!-- MODAL -->
+<div
+    id="manualModal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+>
+
+    <div
+        class="w-full max-w-xl bg-gray-800 border border-gray-700 rounded-2xl shadow-2xl overflow-hidden"
+    >
+
+        <!-- HEADER -->
+        <div class="flex items-center justify-between px-6 py-5 border-b border-gray-700">
+
+            <div>
+
+                <h3 class="text-2xl font-bold">
+                    Input Ulasan Manual
+                </h3>
+
+                <p class="text-sm text-gray-400 mt-1">
+                    Analisis sentimen otomatis menggunakan AI
+                </p>
+
+            </div>
+
+            <button
+                onclick="closeManualModal()"
+                class="text-gray-400 hover:text-white transition"
+            >
+
+                <span class="material-symbols-outlined text-3xl">
+                    close
+                </span>
+
+            </button>
+
+        </div>
+
+        <!-- FORM -->
+        <form
+            action="{{ route('manual.input') }}"
+            method="POST"
+            class="p-6"
+        >
+
+            @csrf
+
+            <!-- USERNAME -->
+            <div class="mb-5">
+
+                <label class="block text-sm font-medium mb-2">
+
+                    Username
+
+                </label>
+
+                <input
+                    type="text"
+                    name="userName"
+                    placeholder="Masukkan username"
+                    required
+                    class="w-full px-4 py-3 rounded-xl bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+
+            </div>
+
+            <!-- ULASAN -->
+            <div class="mb-6">
+
+                <label class="block text-sm font-medium mb-2">
+
+                    Ulasan
+
+                </label>
+
+                <textarea
+                    name="content"
+                    rows="6"
+                    placeholder="Masukkan ulasan pengguna"
+                    required
+                    class="w-full px-4 py-3 rounded-xl bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                ></textarea>
+
+            </div>
+
+            <!-- BUTTON -->
+            <button
+                type="submit"
+                class="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-700 transition text-white font-bold text-lg"
+            >
+
+                Analisis Sentimen
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- CHART -->
 <script>
-    new Chart(document.getElementById('sentimentChart'), {
+
+new Chart(
+    document.getElementById('sentimentChart'),
+    {
+
         type: 'doughnut',
+
         data: {
-            labels: ['Positif', 'Negatif', 'Netral'],
+
+            labels: [
+
+                'Positif',
+                'Negatif',
+                'Netral'
+
+            ],
+
             datasets: [{
-                data: [{{ $positif }}, {{ $negatif }}, {{ $netral }}],
-                backgroundColor: ['#22c55e', '#ef4444', '#eab308'],
+
+                data: [
+
+                    {{ $positif ?? 0 }},
+                    {{ $negatif ?? 0 }},
+                    {{ $netral ?? 0 }}
+
+                ],
+
+                backgroundColor: [
+
+                    '#22c55e',
+                    '#ef4444',
+                    '#eab308'
+
+                ],
+
                 borderWidth: 0
+
             }]
+
         },
-        options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false } } }
-    });
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: true,
+
+            plugins: {
+
+                legend: {
+
+                    display: false
+
+                }
+
+            }
+
+        }
+
+    }
+
+);
+
+function openManualModal()
+{
+    document
+        .getElementById('manualModal')
+        .classList
+        .remove('hidden');
+
+    document
+        .getElementById('manualModal')
+        .classList
+        .add('flex');
+}
+
+function closeManualModal()
+{
+    document
+        .getElementById('manualModal')
+        .classList
+        .remove('flex');
+
+    document
+        .getElementById('manualModal')
+        .classList
+        .add('hidden');
+}
+
 </script>
+
 @endsection

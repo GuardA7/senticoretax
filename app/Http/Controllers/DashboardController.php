@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
 class DashboardController extends Controller
 {
     public function index()
     {
-        // =========================
-        // PATH DATASET
-        // =========================
-        $path = base_path(
-            '../python-api/dataset/dataset.csv'
-        );
-
         // =========================
         // DEFAULT
         // =========================
@@ -25,31 +20,72 @@ class DashboardController extends Controller
         $netral = 0;
 
         // =========================
-        // CEK FILE
+        // PATH DATASET
         // =========================
-        if (file_exists($path)) {
+        $xlsx =
+            'C:/senticoretax/python-api/dataset/dataset.xlsx';
 
-            // =========================
-            // BACA CSV
-            // =========================
+        $xls =
+            'C:/senticoretax/python-api/dataset/dataset.xls';
+
+        $csv =
+            'C:/senticoretax/python-api/dataset/dataset.csv';
+
+        // =========================
+        // LOAD XLSX
+        // =========================
+        if (file_exists($xlsx)) {
+
+            $spreadsheet =
+                IOFactory::load($xlsx);
+
+            $sheet =
+                $spreadsheet->getActiveSheet();
+
+            $rows =
+                $sheet->toArray();
+        }
+
+        // =========================
+        // LOAD XLS
+        // =========================
+        elseif (file_exists($xls)) {
+
+            $spreadsheet =
+                IOFactory::load($xls);
+
+            $sheet =
+                $spreadsheet->getActiveSheet();
+
+            $rows =
+                $sheet->toArray();
+        }
+
+        // =========================
+        // LOAD CSV
+        // =========================
+        elseif (file_exists($csv)) {
+
             $rows = array_map(
                 'str_getcsv',
-                file($path)
+                file($csv)
             );
+        }
 
-            // =========================
-            // HEADER
-            // =========================
-            $header = array_shift($rows);
+        else {
 
-            // =========================
-            // TOTAL
-            // =========================
+            $rows = [];
+        }
+
+        // =========================
+        // HAPUS HEADER
+        // =========================
+        if (!empty($rows)) {
+
+            array_shift($rows);
+
             $total = count($rows);
 
-            // =========================
-            // LOOP DATA
-            // =========================
             foreach ($rows as $row) {
 
                 $label =
@@ -60,19 +96,16 @@ class DashboardController extends Controller
                 if ($label == 'positif') {
 
                     $positif++;
-
                 }
 
                 elseif ($label == 'negatif') {
 
                     $negatif++;
-
                 }
 
                 elseif ($label == 'netral') {
 
                     $netral++;
-
                 }
             }
         }
@@ -102,12 +135,67 @@ class DashboardController extends Controller
             0;
 
         // =========================
-        // AKURASI MODEL
+        // DEFAULT AKURASI
         // =========================
-        $nbAccuracy = 0.88;
+        $nbAccuracy = 0;
 
-        $svmAccuracy = 0.92;
+        $svmAccuracy = 0;
 
+        // =========================
+        // FILE AKURASI
+        // =========================
+        $accuracyPath =
+            'C:/senticoretax/python-api/models/accuracy.json';
+
+        // =========================
+        // CEK FILE
+        // =========================
+        if (file_exists($accuracyPath)) {
+
+            $accuracy = json_decode(
+                file_get_contents($accuracyPath),
+                true
+            );
+
+            // =========================
+            // NAIVE BAYES
+            // =========================
+            $nbAccuracy = floatval(
+
+                $accuracy['naive_bayes']['accuracy']
+                ?? 0
+
+            );
+
+            // =========================
+            // SVM
+            // =========================
+            $svmAccuracy = floatval(
+
+                $accuracy['svm']['accuracy']
+                ?? 0
+
+            );
+        }
+
+        // =========================
+        // SESSION MANUAL
+        // =========================
+        $manualUser =
+            session('manualUser');
+
+        $manualText =
+            session('manualText');
+
+        $nbResult =
+            session('nbResult');
+
+        $svmResult =
+            session('svmResult');
+
+        // =========================
+        // RETURN
+        // =========================
         return view(
             'dashboard',
             compact(
@@ -128,8 +216,15 @@ class DashboardController extends Controller
 
                 'nbAccuracy',
 
-                'svmAccuracy'
+                'svmAccuracy',
 
+                'manualUser',
+
+                'manualText',
+
+                'nbResult',
+
+                'svmResult'
             )
         );
     }

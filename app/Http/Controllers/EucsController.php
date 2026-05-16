@@ -2,59 +2,207 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
 class EucsController extends Controller
 {
+    // =========================
+    // HALAMAN EUCS
+    // =========================
     public function index()
     {
+        return view('eucs');
+    }
+
+    // =========================
+    // UPLOAD KUESIONER
+    // =========================
+    public function upload(
+        Request $request
+    ) {
+
+        $request->validate([
+
+            'file' =>
+                'required|file|mimes:xlsx,xls,csv'
+
+        ]);
+
         // =========================
-        // DATA EUCS
+        // LOAD FILE
         // =========================
-        $kepuasan = 78.5;
+        $spreadsheet =
+            IOFactory::load(
+                $request
+                    ->file('file')
+                    ->getPathname()
+            );
 
-        $positif = 5200;
+        $sheet =
+            $spreadsheet->getActiveSheet();
 
-        $total = 7546;
+        $rows =
+            $sheet->toArray();
 
         // =========================
-        // METRIK EUCS
+        // HAPUS HEADER
         // =========================
-        $eucsMetrics = [
+        array_shift($rows);
 
-            'Content' => [
-                'puas' => 80,
-                'tidak_puas' => 20
-            ],
+        // =========================
+        // TOTAL RESPONDEN
+        // =========================
+        $total = count($rows);
 
-            'Accuracy' => [
-                'puas' => 78,
-                'tidak_puas' => 22
-            ],
+        // =========================
+        // DEFAULT
+        // =========================
+        $content = 0;
 
-            'Format' => [
-                'puas' => 75,
-                'tidak_puas' => 25
-            ],
+        $accuracy = 0;
 
-            'Ease of Use' => [
-                'puas' => 82,
-                'tidak_puas' => 18
-            ],
+        $format = 0;
 
-            'Timeliness' => [
-                'puas' => 77,
-                'tidak_puas' => 23
-            ]
+        $ease = 0;
 
-        ];
+        $time = 0;
+
+        // =========================
+        // LOOP DATA
+        // =========================
+        foreach ($rows as $row) {
+
+            // CONTENT
+            $content += (
+
+                ($row[1] ?? 0) +
+                ($row[2] ?? 0) +
+                ($row[3] ?? 0) +
+                ($row[4] ?? 0) +
+                ($row[5] ?? 0)
+
+            );
+
+            // ACCURACY
+            $accuracy += (
+
+                ($row[6] ?? 0) +
+                ($row[7] ?? 0) +
+                ($row[8] ?? 0) +
+                ($row[9] ?? 0) +
+                ($row[10] ?? 0)
+
+            );
+
+            // FORMAT
+            $format += (
+
+                ($row[11] ?? 0) +
+                ($row[12] ?? 0) +
+                ($row[13] ?? 0) +
+                ($row[14] ?? 0) +
+                ($row[15] ?? 0)
+
+            );
+
+            // EASE OF USE
+            $ease += (
+
+                ($row[16] ?? 0) +
+                ($row[17] ?? 0) +
+                ($row[18] ?? 0) +
+                ($row[19] ?? 0) +
+                ($row[20] ?? 0)
+
+            );
+
+            // TIMELINESS
+            $time += (
+
+                ($row[21] ?? 0) +
+                ($row[22] ?? 0) +
+                ($row[23] ?? 0) +
+                ($row[24] ?? 0) +
+                ($row[25] ?? 0)
+
+            );
+        }
+
+        // =========================
+        // RATA RATA %
+        // =========================
+        $contentAvg =
+            round(
+                ($content / ($total * 25)) * 100,
+                2
+            );
+
+        $accuracyAvg =
+            round(
+                ($accuracy / ($total * 25)) * 100,
+                2
+            );
+
+        $formatAvg =
+            round(
+                ($format / ($total * 25)) * 100,
+                2
+            );
+
+        $easeAvg =
+            round(
+                ($ease / ($total * 25)) * 100,
+                2
+            );
+
+        $timeAvg =
+            round(
+                ($time / ($total * 25)) * 100,
+                2
+            );
+
+        // =========================
+        // RATA RATA TOTAL
+        // =========================
+        $average = round(
+
+            (
+                $contentAvg +
+                $accuracyAvg +
+                $formatAvg +
+                $easeAvg +
+                $timeAvg
+            ) / 5,
+
+            2
+
+        );
 
         return view(
             'eucs',
-            compact(
-                'kepuasan',
-                'positif',
-                'total',
-                'eucsMetrics'
-            )
+            [
+
+                'content' =>
+                    $contentAvg,
+
+                'accuracy' =>
+                    $accuracyAvg,
+
+                'format' =>
+                    $formatAvg,
+
+                'ease' =>
+                    $easeAvg,
+
+                'time' =>
+                    $timeAvg,
+
+                'average' =>
+                    $average
+
+            ]
         );
     }
 }

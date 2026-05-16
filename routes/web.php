@@ -99,3 +99,14 @@ Route::get(
     '/export-laporan',
     [ExportController::class, 'laporan']
 )->name('export.laporan');
+
+
+Route::get(
+    '/eucs',
+    [EucsController::class, 'index']
+)->name('eucs');
+
+Route::post(
+    '/upload-eucs',
+    [EucsController::class, 'upload']
+)->name('upload.eucs');

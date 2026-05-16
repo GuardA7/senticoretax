@@ -32,7 +32,7 @@
             </p>
 
             <p class="text-3xl font-bold text-indigo-400">
-                {{ number_format($accuracy * 100, 2) }}%
+                {{ number_format($accuracy , 2) }}%
             </p>
 
         </div>

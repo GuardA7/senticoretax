@@ -1,0 +1,1 @@
+{"naive_bayes": {"accuracy": 81.24, "precision": 71.5, "recall": 81.24, "f1_score": 74.99}, "svm": {"accuracy": 85.84, "precision": 84.13, "recall": 85.84, "f1_score": 84.29}}

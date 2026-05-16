@@ -1,54 +1,90 @@
+import os
 import joblib
 
-from services.preprocessing import preprocess_text
+from services.preprocessing import (
+    preprocess_text
+)
 
-nb_model = joblib.load(
+# =========================
+# LOAD MODEL
+# =========================
+nb_model = None
+
+svm_model = None
+
+vectorizer = None
+
+# =========================
+# LOAD NB
+# =========================
+if os.path.exists(
     'models/nb_model.pkl'
-)
+):
 
-svm_model = joblib.load(
+    nb_model = joblib.load(
+        'models/nb_model.pkl'
+    )
+
+# =========================
+# LOAD SVM
+# =========================
+if os.path.exists(
     'models/svm_model.pkl'
-)
+):
+
+    svm_model = joblib.load(
+        'models/svm_model.pkl'
+    )
+
+# =========================
+# LOAD VECTORIZER
+# =========================
+if os.path.exists(
+    'models/vectorizer.pkl'
+):
+
+    vectorizer = joblib.load(
+        'models/vectorizer.pkl'
+    )
 
 # =========================
 # PREDICT NB
 # =========================
 def predict_nb(text):
 
-    processed = preprocess_text(text)
+    if nb_model is None:
 
-    prediction = nb_model.predict(
-        [processed]
-    )[0]
+        return 'Model NB belum ditraining'
 
-    probability = nb_model.predict_proba(
-        [processed]
-    )[0]
+    text = preprocess_text(text)
 
-    confidence = round(
-        max(probability) * 100,
-        2
+    text_vector = vectorizer.transform(
+        [text]
     )
 
-    return {
-        'prediction': prediction,
-        'confidence': confidence,
-        'processed': processed
-    }
+    prediction = nb_model.predict(
+            text_vector
+        )[0]
+
+    return prediction
 
 # =========================
 # PREDICT SVM
 # =========================
 def predict_svm(text):
 
-    processed = preprocess_text(text)
+    if svm_model is None:
+
+        return 'Model SVM belum ditraining'
+
+    text = preprocess_text(text)
+
+    text_vector = vectorizer.transform(
+        [text]
+    )
 
     prediction = svm_model.predict(
-        [processed]
-    )[0]
+            text_vector
+        )[0]
 
-    return {
-        'prediction': prediction,
-        'confidence': 100,
-        'processed': processed
-    }
+    return prediction
