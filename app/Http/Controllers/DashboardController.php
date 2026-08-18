@@ -23,13 +23,13 @@ class DashboardController extends Controller
         // PATH DATASET
         // =========================
         $xlsx =
-            'C:/senticoretax/python-api/dataset/dataset.xlsx';
+            'python-api/dataset/dataset.xlsx';
 
         $xls =
-            'C:/senticoretax/python-api/dataset/dataset.xls';
+            'python-api/dataset/dataset.xls';
 
         $csv =
-            'C:/senticoretax/python-api/dataset/dataset.csv';
+            'python-api/dataset/dataset.csv';
 
         // =========================
         // LOAD XLSX
@@ -148,7 +148,7 @@ class DashboardController extends Controller
         // FILE AKURASI
         // =========================
         $accuracyPath =
-            'C:/senticoretax/python-api/models/accuracy.json';
+            'python-api/models/accuracy.json';
 
         // =========================
         // CEK FILE
