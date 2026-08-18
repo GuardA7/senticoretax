@@ -160,24 +160,17 @@ class SentimentController extends Controller
 
         } catch (\Exception $e) {
 
-            // =========================
-            // RESPON UNTUK REQUEST AJAX
-            // =========================
-            if ($request->wantsJson()) {
+    \Log::error('MANUAL INPUT ERROR', [
+        'message' => $e->getMessage(),
+        'file' => $e->getFile(),
+        'line' => $e->getLine(),
+    ]);
 
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Gagal memproses analisis sentimen. Pastikan Flask API aktif.'
-                ], 500);
-            }
-
-            return redirect()
-                ->route('dashboard')
-                ->with(
-                    'error',
-                    'Gagal memproses analisis sentimen. Pastikan Flask API aktif.'
-                );
-        }
+    return response()->json([
+        'success' => false,
+        'message' => $e->getMessage(),
+    ], 500);
+}
 
         $nbResult = $nb['result'] ?? null;
 

@@ -16,4 +16,13 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_manual_input_route_uses_https_when_running_under_https_proxy(): void
+    {
+        config(['app.url' => 'https://senticoretax-production.up.railway.app']);
+
+        $url = route('manual.input');
+
+        $this->assertStringStartsWith('https://', $url);
+    }
 }
