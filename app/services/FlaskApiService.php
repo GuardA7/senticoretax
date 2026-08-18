@@ -3,40 +3,60 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class FlaskApiService
 {
-    protected $baseUrl =
-        'https://web-production-eda61.up.railway.app';
+    protected $baseUrl;
 
-    // =========================
-    // NAIVE BAYES
-    // =========================
+    public function __construct()
+    {
+        $this->baseUrl = rtrim(
+            env('FLASK_API_URL'),
+            '/'
+        );
+    }
+
     public function predictNB($text)
     {
-        $response = Https::withoutVerifying()
-    ->post(
-        $this->baseUrl . '/predict/nb',
-        [
-            'content' => $text
-        ]
-    );
+        $response = Http::timeout(120)
+            ->acceptJson()
+            ->post(
+                $this->baseUrl . '/predict/nb',
+                [
+                    'content' => $text
+                ]
+            );
+
+        Log::info('FLASK NB RESPONSE', [
+            'url' => $this->baseUrl . '/predict/nb',
+            'status' => $response->status(),
+            'body' => $response->body(),
+        ]);
+
+        $response->throw();
 
         return $response->json();
     }
 
-    // =========================
-    // SVM
-    // =========================
     public function predictSVM($text)
     {
-       $response = Https::withoutVerifying()
-    ->post(
-        $this->baseUrl . '/predict/svm',
-        [
-            'content' => $text
-        ]
-    );
+        $response = Http::timeout(120)
+            ->acceptJson()
+            ->post(
+                $this->baseUrl . '/predict/svm',
+                [
+                    'content' => $text
+                ]
+            );
+
+        Log::info('FLASK SVM RESPONSE', [
+            'url' => $this->baseUrl . '/predict/svm',
+            'status' => $response->status(),
+            'body' => $response->body(),
+        ]);
+
+        $response->throw();
 
         return $response->json();
     }
