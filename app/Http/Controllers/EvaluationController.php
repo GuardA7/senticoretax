@@ -16,8 +16,7 @@ class EvaluationController extends Controller
         // =========================
         // FILE AKURASI
         // =========================
-        $path =
-            'C:/senticoretax/python-api/models/accuracy.json';
+        $path = base_path('python-api/models/accuracy.json');
 
         // =========================
         // CEK FILE
@@ -29,58 +28,26 @@ class EvaluationController extends Controller
                 true
             );
 
+            $data = is_array($data) ? $data : [];
+
             // =========================
             // NAIVE BAYES
             // =========================
             $nbMetrics = [
-
-                'accuracy' =>
-
-                    $data['naive_bayes']['accuracy']
-                    ?? 0,
-
-                'precision' =>
-
-                    $data['naive_bayes']['precision']
-                    ?? 0,
-
-                'recall' =>
-
-                    $data['naive_bayes']['recall']
-                    ?? 0,
-
-                'f1_score' =>
-
-                    $data['naive_bayes']['f1_score']
-                    ?? 0
-
+                'accuracy' => data_get($data, 'naive_bayes.accuracy', 0),
+                'precision' => data_get($data, 'naive_bayes.precision', 0),
+                'recall' => data_get($data, 'naive_bayes.recall', 0),
+                'f1_score' => data_get($data, 'naive_bayes.f1_score', 0),
             ];
 
             // =========================
             // SVM
             // =========================
             $svmMetrics = [
-
-                'accuracy' =>
-
-                    $data['svm']['accuracy']
-                    ?? 0,
-
-                'precision' =>
-
-                    $data['svm']['precision']
-                    ?? 0,
-
-                'recall' =>
-
-                    $data['svm']['recall']
-                    ?? 0,
-
-                'f1_score' =>
-
-                    $data['svm']['f1_score']
-                    ?? 0
-
+                'accuracy' => data_get($data, 'svm.accuracy', 0),
+                'precision' => data_get($data, 'svm.precision', 0),
+                'recall' => data_get($data, 'svm.recall', 0),
+                'f1_score' => data_get($data, 'svm.f1_score', 0),
             ];
         }
 
