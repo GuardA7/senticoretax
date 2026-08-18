@@ -31,7 +31,7 @@ class ComparisonController extends Controller
         // FILE AKURASI
         // =========================
         $path =
-            ('python-api/models/accuracy.json');
+            $this->pythonApiPath('models/accuracy.json');
 
         // =========================
         // CEK FILE

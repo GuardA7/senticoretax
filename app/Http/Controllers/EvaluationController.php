@@ -16,7 +16,7 @@ class EvaluationController extends Controller
         // =========================
         // FILE AKURASI
         // =========================
-        $path = base_path('python-api/models/accuracy.json');
+        $path = $this->pythonApiPath('models/accuracy.json');
 
         // =========================
         // CEK FILE

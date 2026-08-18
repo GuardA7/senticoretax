@@ -23,13 +23,13 @@ class DashboardController extends Controller
         // PATH DATASET
         // =========================
         $xlsx =
-            ('python-api/dataset/dataset.xlsx');
+            $this->pythonApiPath('dataset/dataset.xlsx');
 
         $xls =
-            ('python-api/dataset/dataset.xls');
+            $this->pythonApiPath('dataset/dataset.xls');
 
         $csv =
-            ('python-api/dataset/dataset.csv');
+            $this->pythonApiPath('dataset/dataset.csv');
 
         // =========================
         // LOAD XLSX
@@ -148,7 +148,7 @@ class DashboardController extends Controller
         // FILE AKURASI
         // =========================
         $accuracyPath =
-            ('python-api/models/accuracy.json');
+            $this->pythonApiPath('models/accuracy.json');
 
         // =========================
         // CEK FILE

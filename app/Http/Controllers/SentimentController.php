@@ -15,8 +15,12 @@ class SentimentController extends Controller
     // PATH DATASET
     // (disamakan dengan yang dibaca DashboardController)
     // =========================
-    private $datasetPath =
-        ('python-api/dataset/dataset.xlsx');
+    private $datasetPath;
+
+    public function __construct()
+    {
+        $this->datasetPath = base_path('../python-api/dataset/dataset.xlsx');
+    }
 
     // =========================
     // NAIVE BAYES
@@ -30,7 +34,7 @@ class SentimentController extends Controller
         $results = [];
 
         $accuracyPath =
-            ('python-api/models/accuracy.json');
+            base_path('../python-api/models/accuracy.json');
 
         if (file_exists($accuracyPath)) {
 
@@ -89,7 +93,7 @@ class SentimentController extends Controller
         $results = [];
 
         $accuracyPath =
-            ('python-api/models/accuracy.json');
+            base_path('../python-api/models/accuracy.json');
 
         if (file_exists($accuracyPath)) {
 

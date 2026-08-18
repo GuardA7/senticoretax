@@ -14,7 +14,7 @@ class ExportController extends Controller
         // FILE PREPROCESSING
         // =========================
         $path =
-            ('python-api/dataset/preprocessing_result.json');
+            $this->pythonApiPath('dataset/preprocessing_result.json');
 
         // =========================
         // CEK FILE

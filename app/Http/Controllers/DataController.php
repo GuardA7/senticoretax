@@ -25,22 +25,22 @@ class DataController extends Controller
             // AKURASI MODEL
             // (dibaca DashboardController untuk nbAccuracy & svmAccuracy)
             // =========================
-            ('python-api/models/accuracy.json'),
+            $this->pythonApiPath('models/accuracy.json'),
 
             // =========================
             // DATASET
             // Path disamakan persis dengan yang dibaca DashboardController,
             // dan mencakup ketiga kemungkinan format (xlsx, xls, csv)
             // =========================
-            ('python-api/dataset/dataset.xlsx'),
-            ('python-api/dataset/dataset.xls'),
-            ('python-api/dataset/dataset.csv'),
+            $this->pythonApiPath('dataset/dataset.xlsx'),
+            $this->pythonApiPath('dataset/dataset.xls'),
+            $this->pythonApiPath('dataset/dataset.csv'),
 
             // =========================
             // MODEL AI
             // =========================
-            ('python-api/models/nb_model.pkl'),
-            ('python-api/models/svm_model.pkl'),
+            $this->pythonApiPath('models/nb_model.pkl'),
+            $this->pythonApiPath('models/svm_model.pkl'),
 
         ];
 
