@@ -16,7 +16,7 @@ class SentimentController extends Controller
     // (disamakan dengan yang dibaca DashboardController)
     // =========================
     private $datasetPath =
-        ('python-api/models/accuracy.json');
+        ('python-api/dataset/dataset.xlsx');
 
     // =========================
     // NAIVE BAYES
@@ -160,17 +160,24 @@ class SentimentController extends Controller
 
         } catch (\Exception $e) {
 
-    \Log::error('MANUAL INPUT ERROR', [
-        'message' => $e->getMessage(),
-        'file' => $e->getFile(),
-        'line' => $e->getLine(),
-    ]);
+            // =========================
+            // RESPON UNTUK REQUEST AJAX
+            // =========================
+            if ($request->wantsJson()) {
 
-    return response()->json([
-        'success' => false,
-        'message' => $e->getMessage(),
-    ], 500);
-}
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Gagal memproses analisis sentimen. Pastikan Flask API aktif.'
+                ], 500);
+            }
+
+            return redirect()
+                ->route('dashboard')
+                ->with(
+                    'error',
+                    'Gagal memproses analisis sentimen. Pastikan Flask API aktif.'
+                );
+        }
 
         $nbResult = $nb['result'] ?? null;
 
@@ -191,17 +198,17 @@ class SentimentController extends Controller
         // (supaya ikut terhitung di statistik Dashboard)
         // 2 baris terpisah: satu untuk hasil NB, satu untuk hasil SVM
         // =========================
-        // $this->appendToDataset(
-//     'Manual (NB)',
-//     $content,
-//     $nbResult
-// );
+        $this->appendToDataset(
+            'Manual (NB)',
+            $content,
+            $nbResult
+        );
 
-// $this->appendToDataset(
-//     'Manual (SVM)',
-//     $content,
-//     $svmResult
-// );
+        $this->appendToDataset(
+            'Manual (SVM)',
+            $content,
+            $svmResult
+        );
 
         // =========================
         // RESPON UNTUK REQUEST AJAX
