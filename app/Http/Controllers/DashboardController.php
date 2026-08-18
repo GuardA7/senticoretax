@@ -88,10 +88,13 @@ class DashboardController extends Controller
 
             foreach ($rows as $row) {
 
-                $label =
+                $rawLabel =
                     strtolower(
                         trim($row[2] ?? '')
                     );
+
+                $label =
+                    $this->normalizeLabel($rawLabel);
 
                 if ($label == 'positif') {
 
@@ -227,5 +230,44 @@ class DashboardController extends Controller
                 'svmResult'
             )
         );
+    }
+
+    // =========================
+    // NORMALISASI LABEL
+    // Menerima berbagai variasi format dari Flask API
+    // (Inggris/Indonesia, singkatan, dsb) dan
+    // mengembalikannya sebagai salah satu dari:
+    // 'positif', 'negatif', 'netral', atau string aslinya
+    // kalau tidak dikenali.
+    // =========================
+    private function normalizeLabel(string $label): string
+    {
+        $label = strtolower(trim($label));
+
+        $positifVariants = [
+            'positif', 'positive', 'pos', '1'
+        ];
+
+        $negatifVariants = [
+            'negatif', 'negative', 'neg', '-1', '0'
+        ];
+
+        $netralVariants = [
+            'netral', 'neutral', 'net'
+        ];
+
+        if (in_array($label, $positifVariants)) {
+            return 'positif';
+        }
+
+        if (in_array($label, $negatifVariants)) {
+            return 'negatif';
+        }
+
+        if (in_array($label, $netralVariants)) {
+            return 'netral';
+        }
+
+        return $label;
     }
 }

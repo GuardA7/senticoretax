@@ -7,12 +7,14 @@ from services.preprocessing import (
 
 # =========================
 # LOAD MODEL
+# Sekarang setiap file adalah PIPELINE UTUH
+# (tfidf + classifier), hasil dari
+# grid_nb.best_estimator_ / grid_svm.best_estimator_
+# yang disimpan di train.py.
 # =========================
 nb_model = None
 
 svm_model = None
-
-vectorizer = None
 
 # =========================
 # LOAD NB
@@ -37,17 +39,6 @@ if os.path.exists(
     )
 
 # =========================
-# LOAD VECTORIZER
-# =========================
-if os.path.exists(
-    'models/vectorizer.pkl'
-):
-
-    vectorizer = joblib.load(
-        'models/vectorizer.pkl'
-    )
-
-# =========================
 # PREDICT NB
 # =========================
 def predict_nb(text):
@@ -58,13 +49,9 @@ def predict_nb(text):
 
     text = preprocess_text(text)
 
-    text_vector = vectorizer.transform(
-        [text]
-    )
-
     prediction = nb_model.predict(
-            text_vector
-        )[0]
+        [text]
+    )[0]
 
     return prediction
 
@@ -79,12 +66,8 @@ def predict_svm(text):
 
     text = preprocess_text(text)
 
-    text_vector = vectorizer.transform(
-        [text]
-    )
-
     prediction = svm_model.predict(
-            text_vector
-        )[0]
+        [text]
+    )[0]
 
     return prediction

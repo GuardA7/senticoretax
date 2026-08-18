@@ -1,0 +1,1406 @@
+{
+  "naive_bayes": [
+    {
+      "model": "naive_bayes",
+      "content": "Gak bisa diakses dikarenakan gak bisa masukin no NPWP sesuai nik,no NPWP kurang satu gak bisa harusnya 16 digit,ini yg bisa cma 15 digit",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Cara Ubah Data Gimana",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Diperbaiki lah",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Ribet x Mau lapor pajak Ja.... Padahal pegawai pajak nya kaya2 .... Tolong di permudah lah org utk lapor pajak.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Mbulet tp tetep gak bisa masuk. Beginikah punya negara indonesia",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "M-pajak sangat bgus aplikasinya TDK rumit",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "kenapa susah banget live chat padahal mau ganti nomer hp",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "ada yg tlp saya pakai nma djp dan instal apk.a di gogle ap itu bnern orang pajak",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "dicoba",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Lohlohloh, katasandi salah terus padahal udh lupa sandi juga, tolong diperbaiki min",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "ini untuk pengajuan efin dengan kode nomer 16 agka gabisa sedangkan di aplikasi hanya 15 angka",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "gooood",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "wihh gamenya bagus sangat mengedukasi bayi usia 2 bulan lebih 28 tahun, kalo bisa tambahin fitur auto reload sama gacha karakter, perbanyak skin senjata dan perluas mapnya Ã°Å¸Â¤Â thnk u",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Tombol pilihan jenis pajak dan jenis storan gak bisa di klik ketika mau buat kode biling,.. mohon diperbaiki kakak. Untuk tampilan sudah cukup bagus dan simple.",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Maaf nih kenapa yah waktu pengajuan efin di saat verifikasi kode yg di kirim via sms atau email selalu salah terus padahal bener kok kode verifikasinya. Tolong di perbaiki lagi apk nya",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "ga ada menu lupa sandi",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "1: dulu",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Data sudah Benar.. tp tidak bs diproses.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Tolonglh diperbaiki. Mau pemadanan ga bisa bikin akun. Besok sudah hari terakhir pemadanan",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Yang bener aja! Apk sama web kaga jelas gimana bisa cara laporan, mana kena denda kalau kaga laporan ngotak aja lah malah mempersulit rakyat. \"SPT Tahunan telah diatur dalam Undang-Undang No.28 Tahun 2007 tentang Ketentuan Umum dan Tata Cara Perpajakan. Mengacu undang-undang tersebut, pemerintah mengharuskan seluruh wajib pajak agar melaporkan SPT sesuai dengan ketentuan yang berlaku.\" Nih lagi \"Apabila Wajib Pajak tidak menyampaikan Surat Pemberitahuan sampai batas waktu, dapat dikenakan sanksi",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Mantaaap",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "tidak bisa berkata-kata",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Ok....Ã°Å¸â€˜Â",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Ichblaboy",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Tolong pak website nya di benerin masa nerima kode opt nya lama banget trus waktu berlaku kode optnya cuman 10 menit, sedangkan kode opt nya masuk lebih lama dari 10 menit. Ini gimana sih.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Lebih mudah menginformasi kan pajak pendapatan",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "mungkin tahap uji coba, makanya gagal terus. Ã°Å¸Â¤Â­",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Mudah\" dpt membantu",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Gajih besar kerja gini aduhh",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Ok",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Berat",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "ok",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Oke lah",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Ranting 3 sangat bagus dan oke Ã°Å¸Â¤Â­",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Masih coba",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Pembuatan npwp ribet, live chat percuma tdk befungsi alias tidak bisa di klik. Kalau mau bikin apk online persiapkan yg matang.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Kurang lengkap Pak",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Ribet bos. lupa pasword login disuruh isi EFIN. Lupa EFIN diarahkan ke twitter. Di twitter blm direspon. Tar kalo udah beres kasih 5.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Oke belum berkembang, mulai berkembang, sangat oke berkembang Ã°Å¸Â¤Â­",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Kurang bisa dimengerti",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "pegawai pajak mukanya asem.. mereka lupa darimana asal duitnya mereka bisa gajian .. ya dari rakyat yg bayar pajak tp perlakuanya naudzubillah",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Kanapa ya pasa saya mau daftar efein malah ga bisa pas, pengiriman kode otp nya",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Ok nyaman",
+      "actual": "positif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "kenapa selalu diminta logout terus? aku ga bisa lapor spt. tiap tahun sudah rutin lapor pajak online. baru sekarang ga bisa. ruwet. ternyata site under construction. kapan jadinya?",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Mudah untuk. Mengecek PBB stts",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "ok",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Mohon diperbaiki.. Aplikasi sekelas instansi pemerintah masa buat masuk login aja gak bisa2.. Kacau",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Kalau malam kenapa susah bgt masuk aplikasi ini.... apakah dia sedang tidur...",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "OK",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "MemudHkan segala urusanÃ°Å¸â€˜ÂÃ°Å¸â€˜ÂÃ°Å¸â€˜ÂÃ°Å¸â€™Âª",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "login di website pakai laptop bisa. tapi login pakai aplikasi di HP gak bisa masuk, password atau id yg salah pdhl sudah bener",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Segala macem aplikasi pemerintah pasti kek gini..",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "matap",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "MAAF BUSUK BANGET PAK APLIKASINYA. TOLONG DIPERBAIKI. TKS",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "gmna ya caranya kalo lupa password masuk akun pajak",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Okk",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Situs punya negara ga bisa di akses kalian ngapain aja kerja nya, kalau ga bisa resign ya jangan jadi beban negara",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "kalo orang disuruh bayar pajak, coba tolong aplikasi nya mendukung, disuruh lapor pajak tapi aplikasi ga mendukung",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Saya mau buat spt masuk akunnya saja susah harus konfirmasi email sm telpn tapi g ada pemberitahuan code diemail sm telpn gimana mau laporan",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Nomer NPWP nya masig 15 digit, padahal di npwp skarang udah 16 digit. Jadi ga bisa bikin efin",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Mohon maaf yang sebesarnya, aplikasinya sudah bagus tinggal catat lalu buat kode billing dan bayar pakai e-wallet, mempermudah pembayaran. Tetapi kemarin udah input omset warung lalu ada kendala datanya hilang semua maklum baru memulai jadi belum ada pembukuan jadi omset yang udah di catat lupa lagi, apa ada solusinya ? Maklum baru merintis meneruskan usaha orang tua. Kalau bisa biar mempermudah warung di aplikasinya sekalian pelaporan SPT nya.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Lupa efin, tp saat dikirim kode verifkasi malah tidak masuk masuk kodenta di sms",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "ok",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Fix dong, kaga bisa login terus udah sebulan an, saya rating tinggi biar kebaca ama si admin ini",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "tolong tingkatkan kemudahan dalam mendapatkan kode Verifikasi bisa melalui whatsapp atau email yang sudah terdaftar karena sangat repot sekali jika hanya melalui SMS yang mana di Indonesia masih banyak daerah yang sulit signalnya.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Manfaatkan seperlunya!",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Akhirnya bisa dapat EFiN..",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "lupa No.EFIN untuk Pembaharuan NIK- NPWP 2024. pas ngikuti langkah step by step kode verifikasi nya malah terdeteksi ke no. Hp yg lama atau no.hp awal daftar NPWP tahun 2013/2014 .yg mana no.hp itu sudah Hangus...bgaimana bisa tekirim kode verifikasi ? trus di aplikasi LUPA KODE EFIN itu TIDAK ada mencantumkan atau isian kolom NO.HP dan Email yg Aktif sekarang. mohon aplikasi nya di tingkatkn lagi agar mudah di akses",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "min, saya tidak bisa memasukkan npwp 16 digit di menu efin utk lupa efin, disana hanya boleh 15 digit",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Aplikasi pemerintah meresahkan semua tapi gaji yang buat di luar nurul",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Asli, aku biasanya ngga pernah bisa masuk dan dianggap NPWP dan Password salah. Kusering Uninstal karena kecewa, tapi anehnya barusan kudowload tbtb bisa login lagi, pdhl niatnya mau chat Helpdesk KPP. Seneng banget Ã°Å¸ËœÅ ",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Padahal aplikasinya diawasi negara kenapa kualitasnya seperti ini?",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Aplikasi pemerintah yang sangat jelek, tidak bisa memasukan NIK 16 angka, pemerintah bodoh",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "KODE HANDPHONE BUAT VERIFIKASI NYA G MUNCUL\" HERAN DARI JAM 11 SAMPE JAM 17 DI TUNGGUIN UDAH BRP KALI COBA G MUNCUL\" #HERAN PADAHAL HARI JAM KERJA",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Untuk kelebihannya itu ialah 1. Memudahkan masyarakat dalam membayar pajak 2. Masyarakat dapat menghemat waktu dan biaya tranfortasi 3. Aplikasi ini dapat memberitahu kepada pengguna tentang tanggal tempo pembayaran pajak. Untuk kekurangannya ialah 1. Aplikasi ini rentan terhadap masalah kegagalan sistem, mengganggu pengguna dalam proses pembayaran pajak. 2. Keterbatasan dalam hal fitur 3. Keterbatasan dalam mengakses aplikasi m-pajak",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Tidak ada kode Verifikasi ke email saya 6x percobaan selama 1 jam",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Mantabb , kerenn . Terus tingkatkan!",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "kami udh bayar pajak, gaji dipotong pajak bahkan sebelum terima gaji nya, tapi masih harus download2 aplikasi ginian ckckck",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "lelah banget mau tanya fiska doang, ghosting mulu! Bad!",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Saat minta kode billong malah gak bisa di ketik kolom setelah nama",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "saya konfirmasi ke kpp pajak, infonya penipuan, hati\" ada yg 40mb dan 100mb, handphone saya di sarankan reset pabrik dan laporan yg berwajib",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "ok",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Ok",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "di potong pajak iya udah , lapor pajak nya ribet, harus nya kan kita yg nerima laporan pajaknya krna kita bayar pajak terus, bener gak sih ,,",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "mau log in eda verifikasi bia email tapi kode verifikasi tidak di kirim kirim.. tolong perbaiki lagi sistem nya",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "semoga manfaat",
+      "actual": "positif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "iya",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Ini aplikasi untuk laporan pajak atau cuma buat kode billing aja,gak jelas aplikasinya,klo usah ada kode billing trus lapornya dimna? Polsek,kantor camat,kantor desa,atau kemana?",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "bingung, fiturnya kog gk lengkap yaa, jadi telat lapor pajak",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "dari jawaban petugasnya tidak jelas dan tegas",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Belum memuaskan",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "ok",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Hati hati guys, saya coba tanya di kantor pajak langsung, katanya tidak ada aplikasi resmi dari direktorat pajak, jadi jangan mudah percaya guys",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Password udah sesuai kok tulisannya password slaah trw..by HP by PC gabisa maunya apaaa",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Yuk terus dikembangkan",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Ok",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Cocok untuk kemajuan",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "kurang jelas",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Aplikasi kemplo, buang-buang duit negara",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "naive_bayes",
+      "content": "Ini aplikasi apa Cuma bisa ke menu utama live chat cuma launding parahh Ini aplikasi resmi atau bukan Hadehh padahal menunya sangat sederhana tapi saat di klik gak bisa di buka",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    }
+  ],
+  "svm": [
+    {
+      "model": "svm",
+      "content": "Namanya biaya pemerintah yakan sudah wajar banyak kendala hahahaha Capek saya yg niatnya mau bikin npwp sebagai warga wajib pajak",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "MAKAN TUH RATING BINTANG YANG BICARA... produk gagal",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Gak bisa diakses dikarenakan gak bisa masukin no NPWP sesuai nik,no NPWP kurang satu gak bisa harusnya 16 digit,ini yg bisa cma 15 digit",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Diperbaiki lah",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Ribet x Mau lapor pajak Ja.... Padahal pegawai pajak nya kaya2 .... Tolong di permudah lah org utk lapor pajak.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Mbulet tp tetep gak bisa masuk. Beginikah punya negara indonesia",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "M-pajak sangat bgus aplikasinya TDK rumit",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "svm",
+      "content": "Aplikasi yang sangat tidak membantu. Tolong ditingkatkan lagi demi kemudahan dalam mengakses.",
+      "actual": "negatif",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "kenapa susah banget live chat padahal mau ganti nomer hp",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "ada yg tlp saya pakai nma djp dan instal apk.a di gogle ap itu bnern orang pajak",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "dicoba",
+      "actual": "positif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"positif\""
+    },
+    {
+      "model": "svm",
+      "content": "Lohlohloh, katasandi salah terus padahal udh lupa sandi juga, tolong diperbaiki min",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "ini untuk pengajuan efin dengan kode nomer 16 agka gabisa sedangkan di aplikasi hanya 15 angka",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "wihh gamenya bagus sangat mengedukasi bayi usia 2 bulan lebih 28 tahun, kalo bisa tambahin fitur auto reload sama gacha karakter, perbanyak skin senjata dan perluas mapnya Ã°Å¸Â¤Â thnk u",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Tombol pilihan jenis pajak dan jenis storan gak bisa di klik ketika mau buat kode biling,.. mohon diperbaiki kakak. Untuk tampilan sudah cukup bagus dan simple.",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "svm",
+      "content": "Maaf nih kenapa yah waktu pengajuan efin di saat verifikasi kode yg di kirim via sms atau email selalu salah terus padahal bener kok kode verifikasinya. Tolong di perbaiki lagi apk nya",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "ga ada menu lupa sandi",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Susahhhhhh",
+      "actual": "negatif",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Data sudah Benar.. tp tidak bs diproses.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Tolonglh diperbaiki. Mau pemadanan ga bisa bikin akun. Besok sudah hari terakhir pemadanan",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Yang bener aja! Apk sama web kaga jelas gimana bisa cara laporan, mana kena denda kalau kaga laporan ngotak aja lah malah mempersulit rakyat. \"SPT Tahunan telah diatur dalam Undang-Undang No.28 Tahun 2007 tentang Ketentuan Umum dan Tata Cara Perpajakan. Mengacu undang-undang tersebut, pemerintah mengharuskan seluruh wajib pajak agar melaporkan SPT sesuai dengan ketentuan yang berlaku.\" Nih lagi \"Apabila Wajib Pajak tidak menyampaikan Surat Pemberitahuan sampai batas waktu, dapat dikenakan sanksi",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "cacad",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "tidak bisa berkata-kata",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Ichblaboy",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Tolong pak website nya di benerin masa nerima kode opt nya lama banget trus waktu berlaku kode optnya cuman 10 menit, sedangkan kode opt nya masuk lebih lama dari 10 menit. Ini gimana sih.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "mungkin tahap uji coba, makanya gagal terus. Ã°Å¸Â¤Â­",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Berat",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "LEMBAGA TOLLLOL",
+      "actual": "negatif",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Ranting 3 sangat bagus dan oke Ã°Å¸Â¤Â­",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Pembuatan npwp ribet, live chat percuma tdk befungsi alias tidak bisa di klik. Kalau mau bikin apk online persiapkan yg matang.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Kurang lengkap Pak",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Ribet bos. lupa pasword login disuruh isi EFIN. Lupa EFIN diarahkan ke twitter. Di twitter blm direspon. Tar kalo udah beres kasih 5.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Oke belum berkembang, mulai berkembang, sangat oke berkembang Ã°Å¸Â¤Â­",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Kanapa ya pasa saya mau daftar efein malah ga bisa pas, pengiriman kode otp nya",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Piye pak piye pak piyeeeeeeee web e angel di akses,aplikasi ne yow angel...... Angeeeeel..... Angeeeeeeeel.....wes.... Ã°Å¸Â¤Â£Ã°Å¸Â¤Â£Ã°Å¸Â¤Â£",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Ok nyaman",
+      "actual": "positif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"positif\""
+    },
+    {
+      "model": "svm",
+      "content": "Aplikasi ta*k, habisin uang negara triliunan, hasilnya kek aplikasi buatan anak baru belajar pemrograman.",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "kenapa selalu diminta logout terus? aku ga bisa lapor spt. tiap tahun sudah rutin lapor pajak online. baru sekarang ga bisa. ruwet. ternyata site under construction. kapan jadinya?",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Mohon diperbaiki.. Aplikasi sekelas instansi pemerintah masa buat masuk login aja gak bisa2.. Kacau",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Kalau malam kenapa susah bgt masuk aplikasi ini.... apakah dia sedang tidur...",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "MemudHkan segala urusanÃ°Å¸â€˜ÂÃ°Å¸â€˜ÂÃ°Å¸â€˜ÂÃ°Å¸â€™Âª",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "svm",
+      "content": "login di website pakai laptop bisa. tapi login pakai aplikasi di HP gak bisa masuk, password atau id yg salah pdhl sudah bener",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Segala macem aplikasi pemerintah pasti kek gini..",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "MAAF BUSUK BANGET PAK APLIKASINYA. TOLONG DIPERBAIKI. TKS",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Situs punya negara ga bisa di akses kalian ngapain aja kerja nya, kalau ga bisa resign ya jangan jadi beban negara",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "kalo orang disuruh bayar pajak, coba tolong aplikasi nya mendukung, disuruh lapor pajak tapi aplikasi ga mendukung",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "u know laah, useless",
+      "actual": "negatif",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Saya mau buat spt masuk akunnya saja susah harus konfirmasi email sm telpn tapi g ada pemberitahuan code diemail sm telpn gimana mau laporan",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Nomer NPWP nya masig 15 digit, padahal di npwp skarang udah 16 digit. Jadi ga bisa bikin efin",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Lupa efin, tp saat dikirim kode verifkasi malah tidak masuk masuk kodenta di sms",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Fix dong, kaga bisa login terus udah sebulan an, saya rating tinggi biar kebaca ama si admin ini",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "tolong tingkatkan kemudahan dalam mendapatkan kode Verifikasi bisa melalui whatsapp atau email yang sudah terdaftar karena sangat repot sekali jika hanya melalui SMS yang mana di Indonesia masih banyak daerah yang sulit signalnya.",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Nggak berkembang",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Manfaatkan seperlunya!",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "min, saya tidak bisa memasukkan npwp 16 digit di menu efin utk lupa efin, disana hanya boleh 15 digit",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Aplikasi pemerintah meresahkan semua tapi gaji yang buat di luar nurul",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Asli, aku biasanya ngga pernah bisa masuk dan dianggap NPWP dan Password salah. Kusering Uninstal karena kecewa, tapi anehnya barusan kudowload tbtb bisa login lagi, pdhl niatnya mau chat Helpdesk KPP. Seneng banget Ã°Å¸ËœÅ ",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Padahal aplikasinya diawasi negara kenapa kualitasnya seperti ini?",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Aplikasi pemerintah yang sangat jelek, tidak bisa memasukan NIK 16 angka, pemerintah bodoh",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "KODE HANDPHONE BUAT VERIFIKASI NYA G MUNCUL\" HERAN DARI JAM 11 SAMPE JAM 17 DI TUNGGUIN UDAH BRP KALI COBA G MUNCUL\" #HERAN PADAHAL HARI JAM KERJA",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Untuk kelebihannya itu ialah 1. Memudahkan masyarakat dalam membayar pajak 2. Masyarakat dapat menghemat waktu dan biaya tranfortasi 3. Aplikasi ini dapat memberitahu kepada pengguna tentang tanggal tempo pembayaran pajak. Untuk kekurangannya ialah 1. Aplikasi ini rentan terhadap masalah kegagalan sistem, mengganggu pengguna dalam proses pembayaran pajak. 2. Keterbatasan dalam hal fitur 3. Keterbatasan dalam mengakses aplikasi m-pajak",
+      "actual": "positif",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"positif\""
+    },
+    {
+      "model": "svm",
+      "content": "Tidak ada kode Verifikasi ke email saya 6x percobaan selama 1 jam",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Mantabb , kerenn . Terus tingkatkan!",
+      "actual": "positif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"positif\""
+    },
+    {
+      "model": "svm",
+      "content": "kami udh bayar pajak, gaji dipotong pajak bahkan sebelum terima gaji nya, tapi masih harus download2 aplikasi ginian ckckck",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "lelah banget mau tanya fiska doang, ghosting mulu! Bad!",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Saat minta kode billong malah gak bisa di ketik kolom setelah nama",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "di potong pajak iya udah , lapor pajak nya ribet, harus nya kan kita yg nerima laporan pajaknya krna kita bayar pajak terus, bener gak sih ,,",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "No recommendations",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "mau log in eda verifikasi bia email tapi kode verifikasi tidak di kirim kirim.. tolong perbaiki lagi sistem nya",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "semoga manfaat",
+      "actual": "positif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"positif\""
+    },
+    {
+      "model": "svm",
+      "content": "Seharusnya aplikasi ini mendapatkan bintang setengah, minimal kasih fasilitas pembuatan NPWP-nya dj aplikasi ini. Secara logika bagaimana caranya orang masuk kalau belum daftar. Rakyat dipaksa bayar pajak tetapi aplikasi pajaknya bermasalah",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Ini aplikasi untuk laporan pajak atau cuma buat kode billing aja,gak jelas aplikasinya,klo usah ada kode billing trus lapornya dimna? Polsek,kantor camat,kantor desa,atau kemana?",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "bingung, fiturnya kog gk lengkap yaa, jadi telat lapor pajak",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "dari jawaban petugasnya tidak jelas dan tegas",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Belum memuaskan",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "tolong bpak ibu yang terhormat. kemabalikan seperti dulu untuk masuk aku DJP ini dipermudah hanya dengan no efin dan email. kayanya lapor e filling wajib tapi kenapa dipersulit. no hp tidak valid terus sementara lewat online tidak bisa lewat tlpon tidak bisa bahkan kekantor pajak juga tidak bisa. gimana ini coba. bpak ibu kita bayar pajak bukan ga bayar. klo seperti itu udah cukup bayar pajak saja tidak usah melaporkan",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Hati hati guys, saya coba tanya di kantor pajak langsung, katanya tidak ada aplikasi resmi dari direktorat pajak, jadi jangan mudah percaya guys",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Password udah sesuai kok tulisannya password slaah trw..by HP by PC gabisa maunya apaaa",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Cocok untuk kemajuan",
+      "actual": "positif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"positif\""
+    },
+    {
+      "model": "svm",
+      "content": "ini bagaimana nomor pajak saya ada 16 sedangkan di aplikasi harus 15 angka, asli sangat di sayang kan nih pajak di Indonesia.",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "kurang jelas",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Aplikasi kemplo, buang-buang duit negara",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Ini aplikasi apa Cuma bisa ke menu utama live chat cuma launding parahh Ini aplikasi resmi atau bukan Hadehh padahal menunya sangat sederhana tapi saat di klik gak bisa di buka",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Kaga bagus,..bikin puyeng pala",
+      "actual": "negatif",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Kecewa sih kenapa kalau di buat online tapi harus ke kpp kabupaten juga. Hmm",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "aplikasi sudah bagus, tapi minta efin yang susah",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "banyakan di tilep biaya r&d nya ini aplikasi Ã°Å¸Â¤Â£ gak usah saya jelasin dah ya kenapa saya tulis begini yang lain udah banyak jelasin di bawah",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Cuma habisin anggaran apk tidak maksimal",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "aplikasi tidak sesuai dengan coretax web, pengurusan pajak dilakukan di coretax web dan aplikasi ini hanya penghibur",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Ya gitu",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Ini duit anggaran pajak yang begitu banyak dari rakyat ga sanggup buat bayar IT yang ahli dalam bikin web dan aplikasi?",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Semoga bisa ditambahkan fitur e-SPT PPh 23. Agar ga pindah pindah aplikasi. Satu aplikasi untuk akses semuanya.",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Registrasi sudah berhasil tapi kartu fisik belum di kirim,, dan saya cobak login ulang malah data tidak di temukan.. Payah aplikasi negara kok letoyyyy",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "enggh bisa login dari aplikasi M- Pajak Tetepi bisa login dari browser .... Adeh gawat aplikasi ini",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Setiap login selalu aja no NPWP salah dan back ke awal lagi padahal no NPWP nya sudah benar..",
+      "actual": "negatif",
+      "predicted": "netral",
+      "error_type": "FP untuk \"netral\" / FN untuk \"negatif\""
+    },
+    {
+      "model": "svm",
+      "content": "Sdah ada komentar yg negatif,nggak berbenah juga aplikasi, banyak yg bayar pajak aplikasi juga unfaedah!!! Ada yg sulit kenapa dipermudah,aplikasi dibuat dengan anggaran negara juga nggak bisa mempermudah",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "apps apaan nih",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "Tehnik mesin",
+      "actual": "netral",
+      "predicted": "positif",
+      "error_type": "FP untuk \"positif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "bnyak x aturan mau login aja",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    },
+    {
+      "model": "svm",
+      "content": "\"KEMUDAHAN\" APANYA ,,INI BUAT ORANG YANG BELUM SAMA SEKALI PUNYA NPWP MAU DAFTAR SUSAH BANGAT ,,MANA SERVER DI WEB GAJELAS ,,KADANG NOMOR NPWP CABANGNYA SALAH KADANG BENER",
+      "actual": "netral",
+      "predicted": "negatif",
+      "error_type": "FP untuk \"negatif\" / FN untuk \"netral\""
+    }
+  ]
+}

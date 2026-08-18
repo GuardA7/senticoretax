@@ -1,98 +1,172 @@
 import re
 
-from nltk.corpus import stopwords
-
-from Sastrawi.Stemmer.StemmerFactory import (
-    StemmerFactory
-)
+from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 
 # =========================
-# STOPWORD
+# INIT STEMMER (SASTRAWI)
 # =========================
-stop_words = set(
-    stopwords.words('indonesian')
-)
-
-# =========================
-# STEMMER
-# =========================
-factory = StemmerFactory()
-
-stemmer = factory.create_stemmer()
+stemmer_factory = StemmerFactory()
+stemmer = stemmer_factory.create_stemmer()
 
 # =========================
-# PREPROCESS DETAIL
+# STOPWORD DASAR (SASTRAWI)
 # =========================
-def preprocess_detail(text):
+stopword_factory = StopWordRemoverFactory()
+default_stopwords = set(stopword_factory.get_stop_words())
+
+# =========================
+# KATA YANG WAJIB DIPERTAHANKAN
+# Kata negasi, pembanding, dan penunjuk waktu ini
+# SANGAT MENENTUKAN POLARITAS SENTIMEN.
+# Kalau ikut terbuang sebagai stopword, kalimat
+# seperti "aplikasinya bagusan dulu" atau
+# "tidak bagus" bisa salah diklasifikasikan
+# karena makna pembanding/negasinya hilang.
+# =========================
+KEEP_WORDS = {
 
     # =========================
-    # ORIGINAL
+    # NEGASI
     # =========================
-    original = str(text)
+    'tidak', 'tak', 'bukan', 'jangan', 'belum',
+    'nggak', 'gak', 'ga', 'kagak', 'tanpa',
 
     # =========================
-    # CASE FOLDING
+    # PEMBANDING / TEMPORAL
+    # (penting untuk konteks "dulu vs sekarang")
     # =========================
-    casefold = original.lower()
+    'dulu', 'sekarang', 'lebih', 'kurang',
+    'daripada', 'dibanding', 'dibandingkan',
+    'makin', 'semakin', 'tambah',
 
     # =========================
-    # CLEANING
+    # PENGUAT/PELEMAH MAKNA
     # =========================
-    cleaning = re.sub(
-        r'[^a-zA-Z\s]',
-        '',
-        casefold
-    )
+    'sangat', 'terlalu', 'banget', 'sekali',
+    'agak', 'sedikit',
 
-    # =========================
-    # TOKENIZING
-    # =========================
-    tokens = cleaning.split()
+}
 
-    # =========================
-    # STOPWORD
-    # =========================
-    stopword = [
-        word for word in tokens
-        if word not in stop_words
+# =========================
+# STOPWORD FINAL
+# (default dikurangi kata yang wajib dipertahankan)
+# =========================
+custom_stopwords = default_stopwords - KEEP_WORDS
+
+
+# =========================
+# CLEANING
+# =========================
+def clean_text(text: str) -> str:
+
+    text = text.lower()
+
+    # hapus url
+    text = re.sub(r'http\S+|www\S+', ' ', text)
+
+    # hapus mention & hashtag
+    text = re.sub(r'@\w+|#\w+', ' ', text)
+
+    # hapus angka
+    text = re.sub(r'\d+', ' ', text)
+
+    # hapus tanda baca & karakter selain huruf/spasi
+    text = re.sub(r'[^a-z\s]', ' ', text)
+
+    # rapikan spasi berlebih
+    text = re.sub(r'\s+', ' ', text).strip()
+
+    return text
+
+
+# =========================
+# TOKENIZING
+# =========================
+def tokenize_text(text: str) -> list:
+
+    if not text:
+        return []
+
+    return text.split(' ')
+
+
+# =========================
+# STOPWORD REMOVAL
+# =========================
+def remove_stopwords(tokens: list) -> list:
+
+    return [
+        token for token in tokens
+        if token not in custom_stopwords
+        and token != ''
     ]
 
-    # =========================
-    # STEMMING
-    # =========================
-    stemming = [
-        stemmer.stem(word)
-        for word in stopword
+
+# =========================
+# STEMMING
+# =========================
+def stem_tokens(tokens: list) -> list:
+
+    return [
+        stemmer.stem(token)
+        for token in tokens
     ]
 
+
+# =========================
+# PIPELINE UTAMA
+# =========================
+def preprocess_detail(text: str) -> dict:
+
     # =========================
-    # FINAL
+    # 1. CLEANING
     # =========================
-    final = ' '.join(stemming)
+    cleaning_result = clean_text(text)
+
+    # =========================
+    # 2. TOKENIZING
+    # =========================
+    tokenizing_result = tokenize_text(cleaning_result)
+
+    # =========================
+    # 3. STOPWORD REMOVAL
+    # =========================
+    stopword_result = remove_stopwords(tokenizing_result)
+
+    # =========================
+    # 4. STEMMING
+    # =========================
+    stemming_result = stem_tokens(stopword_result)
+
+    # =========================
+    # 5. FINAL (gabungan hasil akhir)
+    # =========================
+    final_result = ' '.join(stemming_result)
 
     return {
 
-        'original': original,
+        'cleaning': cleaning_result,
 
-        'casefolding': casefold,
+        'tokenizing': tokenizing_result,
 
-        'cleaning': cleaning,
+        'stopword': stopword_result,
 
-        'tokenizing': tokens,
+        'stemming': stemming_result,
 
-        'stopword': stopword,
-
-        'stemming': stemming,
-
-        'final': final
+        'final': final_result,
 
     }
 
-# =========================
-# SIMPLE PREPROCESS
-# =========================
-def preprocess_text(text):
 
-    result =preprocess_detail(text)
+# =========================
+# WRAPPER UNTUK PREDIKSI
+# Dipakai oleh services/prediction.py — hanya butuh
+# string hasil akhir preprocessing, bukan breakdown
+# per-tahap seperti preprocess_detail().
+# =========================
+def preprocess_text(text: str) -> str:
+
+    result = preprocess_detail(text)
 
     return result['final']

@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 use App\Services\FlaskApiService;
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class SentimentController extends Controller
 {
+    // =========================
+    // PATH DATASET
+    // (disamakan dengan yang dibaca DashboardController)
+    // =========================
+    private $datasetPath =
+        'C:/senticoretax/python-api/dataset/dataset.xlsx';
+
     // =========================
     // NAIVE BAYES
     // =========================
@@ -21,15 +29,9 @@ class SentimentController extends Controller
 
         $results = [];
 
-        // =========================
-        // FILE AKURASI
-        // =========================
         $accuracyPath =
             'C:/senticoretax/python-api/models/accuracy.json';
 
-        // =========================
-        // CEK FILE
-        // =========================
         if (file_exists($accuracyPath)) {
 
             $data = json_decode(
@@ -38,26 +40,14 @@ class SentimentController extends Controller
             );
 
             $accuracy = floatval(
-
-                $data['naive_bayes']['accuracy']
-                ?? 0
-
+                $data['naive_bayes']['accuracy'] ?? 0
             );
         }
 
-        // =========================
-        // DATASET
-        // =========================
-        $dataset =
-            'C:/senticoretax/python-api/dataset/dataset.xlsx';
-
-        // =========================
-        // CEK DATASET
-        // =========================
-        if (file_exists($dataset)) {
+        if (file_exists($this->datasetPath)) {
 
             $spreadsheet =
-                IOFactory::load($dataset);
+                IOFactory::load($this->datasetPath);
 
             $sheet =
                 $spreadsheet->getActiveSheet();
@@ -65,48 +55,25 @@ class SentimentController extends Controller
             $rows =
                 $sheet->toArray();
 
-            // =========================
-            // HAPUS HEADER
-            // =========================
             array_shift($rows);
 
-            // =========================
-            // LOOP DATA
-            // =========================
-            foreach (
-                array_slice($rows, 0, 100)
-                as $row
-            ) {
+            foreach (array_slice($rows, 0, 100) as $row) {
 
-                $content =
-                    $row[1] ?? '';
+                $content = $row[1] ?? '';
 
-                // =========================
-                // PREDIKSI NB
-                // =========================
                 $prediction =
-                    $flask->predictNB(
-                        $content
-                    );
+                    $flask->predictNB($content);
 
                 $results[] = [
-
-                    'content' =>
-                        $content,
-
-                    'result' =>
-                        $prediction['result']
-
+                    'content' => $content,
+                    'result' => $prediction['result']
                 ];
             }
         }
 
         return view(
             'klasifikasi_nb',
-            compact(
-                'accuracy',
-                'results'
-            )
+            compact('accuracy', 'results')
         );
     }
 
@@ -121,15 +88,9 @@ class SentimentController extends Controller
 
         $results = [];
 
-        // =========================
-        // FILE AKURASI
-        // =========================
         $accuracyPath =
             'C:/senticoretax/python-api/models/accuracy.json';
 
-        // =========================
-        // CEK FILE
-        // =========================
         if (file_exists($accuracyPath)) {
 
             $data = json_decode(
@@ -138,26 +99,14 @@ class SentimentController extends Controller
             );
 
             $accuracy = floatval(
-
-                $data['svm']['accuracy']
-                ?? 0
-
+                $data['svm']['accuracy'] ?? 0
             );
         }
 
-        // =========================
-        // DATASET
-        // =========================
-        $dataset =
-            'C:/senticoretax/python-api/dataset/dataset.xlsx';
-
-        // =========================
-        // CEK DATASET
-        // =========================
-        if (file_exists($dataset)) {
+        if (file_exists($this->datasetPath)) {
 
             $spreadsheet =
-                IOFactory::load($dataset);
+                IOFactory::load($this->datasetPath);
 
             $sheet =
                 $spreadsheet->getActiveSheet();
@@ -165,48 +114,25 @@ class SentimentController extends Controller
             $rows =
                 $sheet->toArray();
 
-            // =========================
-            // HAPUS HEADER
-            // =========================
             array_shift($rows);
 
-            // =========================
-            // LOOP DATA
-            // =========================
-            foreach (
-                array_slice($rows, 0, 100)
-                as $row
-            ) {
+            foreach (array_slice($rows, 0, 100) as $row) {
 
-                $content =
-                    $row[1] ?? '';
+                $content = $row[1] ?? '';
 
-                // =========================
-                // PREDIKSI SVM
-                // =========================
                 $prediction =
-                    $flask->predictSVM(
-                        $content
-                    );
+                    $flask->predictSVM($content);
 
                 $results[] = [
-
-                    'content' =>
-                        $content,
-
-                    'result' =>
-                        $prediction['result']
-
+                    'content' => $content,
+                    'result' => $prediction['result']
                 ];
             }
         }
 
         return view(
             'klasifikasi_svm',
-            compact(
-                'accuracy',
-                'results'
-            )
+            compact('accuracy', 'results')
         );
     }
 
@@ -218,67 +144,164 @@ class SentimentController extends Controller
         FlaskApiService $flask
     ) {
 
-        // =========================
-        // VALIDASI
-        // =========================
         $request->validate([
-
-            'userName' =>
-                'required',
-
-            'content' =>
-                'required'
-
+            'content' => 'required|string|max:150'
+        ], [
+            'content.max' => 'Ulasan tidak boleh lebih dari 150 karakter.'
         ]);
 
-        // =========================
-        // INPUT USER
-        // =========================
-        $userName =
-            $request->userName;
+        $content = $request->content;
 
-        $content =
-            $request->content;
+        try {
+
+            $nb = $flask->predictNB($content);
+
+            $svm = $flask->predictSVM($content);
+
+        } catch (\Exception $e) {
+
+            // =========================
+            // RESPON UNTUK REQUEST AJAX
+            // =========================
+            if ($request->wantsJson()) {
+
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Gagal memproses analisis sentimen. Pastikan Flask API aktif.'
+                ], 500);
+            }
+
+            return redirect()
+                ->route('dashboard')
+                ->with(
+                    'error',
+                    'Gagal memproses analisis sentimen. Pastikan Flask API aktif.'
+                );
+        }
+
+        $nbResult = $nb['result'] ?? null;
+
+        $svmResult = $svm['result'] ?? null;
 
         // =========================
-        // PREDIKSI NAIVE BAYES
-        // =========================
-        $nb =
-            $flask->predictNB(
-                $content
-            );
-
-        // =========================
-        // PREDIKSI SVM
-        // =========================
-        $svm =
-            $flask->predictSVM(
-                $content
-            );
-
-        // =========================
-        // SIMPAN SESSION
+        // SIMPAN KE SESSION
+        // (untuk card "Hasil Analisis Manual" di dashboard)
         // =========================
         session([
-
-            'manualUser' =>
-                $userName,
-
-            'manualText' =>
-                $content,
-
-            'nbResult' =>
-                $nb['result'],
-
-            'svmResult' =>
-                $svm['result']
-
+            'manualText' => $content,
+            'nbResult' => $nbResult,
+            'svmResult' => $svmResult
         ]);
 
         // =========================
-        // REDIRECT DASHBOARD
+        // TULIS KE DATASET.XLSX
+        // (supaya ikut terhitung di statistik Dashboard)
+        // 2 baris terpisah: satu untuk hasil NB, satu untuk hasil SVM
         // =========================
+        $this->appendToDataset(
+            'Manual (NB)',
+            $content,
+            $nbResult
+        );
+
+        $this->appendToDataset(
+            'Manual (SVM)',
+            $content,
+            $svmResult
+        );
+
+        // =========================
+        // RESPON UNTUK REQUEST AJAX
+        // Hasil langsung dikembalikan tanpa redirect,
+        // supaya bisa ditampilkan langsung di modal
+        // =========================
+        if ($request->wantsJson()) {
+
+            return response()->json([
+                'success' => true,
+                'content' => $content,
+                'nbResult' => $nbResult,
+                'svmResult' => $svmResult
+            ]);
+        }
+
         return redirect()
-            ->route('dashboard');
+            ->route('dashboard')
+            ->with(
+                'success',
+                'Analisis sentimen berhasil diproses.'
+            );
+    }
+
+    // =========================
+    // HELPER: APPEND BARIS BARU KE DATASET.XLSX
+    // =========================
+    private function appendToDataset(
+        string $username,
+        string $content,
+        ?string $label
+    ) {
+
+        // =========================
+        // LABEL WAJIB ADA
+        // =========================
+        if (empty($label)) {
+            return;
+        }
+
+        $label = strtolower(trim($label));
+
+        // =========================
+        // LOAD ATAU BUAT BARU
+        // =========================
+        if (file_exists($this->datasetPath)) {
+
+            $spreadsheet =
+                IOFactory::load($this->datasetPath);
+
+            $sheet =
+                $spreadsheet->getActiveSheet();
+
+        } else {
+
+            $spreadsheet = new Spreadsheet();
+
+            $sheet =
+                $spreadsheet->getActiveSheet();
+
+            // =========================
+            // HEADER BARU
+            // (hanya dibuat kalau file belum ada sama sekali)
+            // =========================
+            $sheet->fromArray(
+                ['username', 'content', 'label'],
+                null,
+                'A1'
+            );
+        }
+
+        // =========================
+        // CARI BARIS KOSONG BERIKUTNYA
+        // =========================
+        $nextRow =
+            $sheet->getHighestRow() + 1;
+
+        $sheet->setCellValue('A' . $nextRow, $username);
+        $sheet->setCellValue('B' . $nextRow, $content);
+        $sheet->setCellValue('C' . $nextRow, $label);
+
+        // =========================
+        // PASTIKAN FOLDER TUJUAN ADA
+        // =========================
+        $dir = dirname($this->datasetPath);
+
+        if (!is_dir($dir)) {
+            mkdir($dir, 0777, true);
+        }
+
+        $writer =
+            IOFactory::createWriter($spreadsheet, 'Xlsx');
+
+        $writer->save($this->datasetPath);
     }
 }

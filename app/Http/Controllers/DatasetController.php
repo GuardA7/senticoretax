@@ -9,7 +9,9 @@ class DatasetController extends Controller
     public function upload(Request $request)
     {
         $request->validate([
-            'file' => 'required|file|mimes:csv,xlsx,xls,txt'
+            'file' => 'required|file|mimes:csv,xlsx,xls,txt|max:15360'
+        ], [
+            'file.max' => 'Ukuran file tidak boleh lebih dari 15 MB.'
         ]);
 
         $file = $request->file('file');

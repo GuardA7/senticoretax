@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html class="dark" lang="id">
+<html class="" lang="id">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Coretax Sentiment - Dashboard Utama')</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -10,28 +11,28 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        body { background-color: #0f172a; }
+        body { background-color: #f8fafc; }
         .sidebar-gradient { background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); }
-        .premium-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
-        .premium-shadow-hover:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .premium-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+        .premium-shadow-hover:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04); }
     </style>
 </head>
 <!-- LOADING OVERLAY -->
 <div id="loadingOverlay"
-     class="hidden fixed inset-0 bg-black/70 z-[9999] flex items-center justify-center">
+     class="hidden fixed inset-0 bg-black/40 z-[9999] flex items-center justify-center">
 
-    <div class="bg-gray-800 px-6 py-4 rounded-xl text-center border border-gray-700">
+    <div class="bg-white px-6 py-4 rounded-xl text-center border border-gray-200 shadow-lg">
 
         <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500 mx-auto mb-3"></div>
 
-        <p class="text-sm text-gray-300">
+        <p class="text-sm text-gray-600">
             Memproses Analisis...
         </p>
 
     </div>
 
 </div>
-<body class="font-sans text-gray-200">
+<body class="font-sans text-gray-700">
 
 <!-- Sidebar -->
 <aside class="fixed left-0 h-screen w-72 sidebar-gradient flex flex-col py-6 px-4 z-50">
@@ -111,13 +112,13 @@
 <main class="ml-72 min-h-screen p-6">
     <div class="max-w-7xl mx-auto">
         @if(session('success'))
-            <div class="mb-4 p-3 bg-green-900/50 border border-green-700 rounded-lg text-green-300 text-sm">
+            <div class="mb-4 p-3 bg-green-50 border border-green-300 rounded-lg text-green-700 text-sm">
                 {{ session('success') }}
             </div>
         @endif
 
         @if(session('error'))
-            <div class="mb-4 p-3 bg-red-900/50 border border-red-700 rounded-lg text-red-300 text-sm">
+            <div class="mb-4 p-3 bg-red-50 border border-red-300 rounded-lg text-red-700 text-sm">
                 {{ session('error') }}
             </div>
         @endif
@@ -127,11 +128,11 @@
 </main>
 
 <!-- Modal Upload -->
-<div id="uploadModal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center">
-    <div class="bg-gray-800 rounded-xl w-full max-w-md p-6">
+<div id="uploadModal" class="fixed inset-0 bg-black/40 z-50 hidden items-center justify-center">
+    <div class="bg-white rounded-xl w-full max-w-md p-6 border border-gray-200 shadow-xl">
         <div class="flex justify-between items-center mb-4">
-            <h3 class="text-xl font-semibold">Upload Dataset</h3>
-            <button onclick="closeUploadModal()" class="text-gray-400 hover:text-white">
+            <h3 class="text-xl font-semibold text-gray-900">Upload Dataset</h3>
+            <button onclick="closeUploadModal()" class="text-gray-400 hover:text-gray-700">
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
@@ -142,20 +143,27 @@
 
             <div class="mb-4">
 
-                <label class="block text-sm font-medium mb-2">
+                <label class="block text-sm font-medium mb-2 text-gray-700">
                     File Dataset
                 </label>
 
                 <input
                     type="file"
                     name="file"
+                    id="datasetFileInput"
                     accept=".csv,.xlsx,.xls"
-                    class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg"
+                    onchange="validateDatasetFileSize()"
+                    class="w-full p-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-700"
                     required
                 >
 
-                <p class="text-xs text-gray-400 mt-2">
+                <p id="datasetFileSizeError" class="hidden text-xs text-red-500 mt-2">
+                    Ukuran file melebihi 15 MB. Silakan pilih file lain.
+                </p>
+
+                <p class="text-xs text-gray-500 mt-2">
                     Format didukung: CSV, XLSX, XLS <br>
+                    Ukuran maksimal: 15 MB <br>
                     Kolom wajib: username, content, score
                 </p>
 
@@ -166,14 +174,15 @@
                 <button
                     type="button"
                     onclick="closeUploadModal()"
-                    class="py-2 px-4 bg-gray-600 rounded-lg text-sm font-semibold hover:bg-gray-700 transition-colors"
+                    class="py-2 px-4 bg-gray-100 border border-gray-300 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-200 transition-colors"
                 >
                     Batal
                 </button>
 
                 <button
                     type="submit"
-                    class="flex-1 py-2 bg-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
+                    id="uploadDatasetSubmitBtn"
+                    class="flex-1 py-2 bg-blue-600 rounded-lg text-sm font-semibold text-white hover:bg-blue-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                     Upload Dataset
                 </button>
@@ -185,11 +194,11 @@
 </div>
 
 <!-- Modal Manual Input -->
-<div id="manualModal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center">
-    <div class="bg-gray-800 rounded-xl w-full max-w-md p-6">
+<div id="manualModal" class="fixed inset-0 bg-black/40 z-50 hidden items-center justify-center">
+    <div class="bg-white rounded-xl w-full max-w-md p-6 border border-gray-200 shadow-xl">
         <div class="flex justify-between items-center mb-4">
-            <h3 class="text-xl font-semibold">Input Ulasan Manual</h3>
-            <button onclick="closeManualModal()" class="text-gray-400 hover:text-white">
+            <h3 class="text-xl font-semibold text-gray-900">Input Ulasan Manual</h3>
+            <button onclick="closeManualModal()" class="text-gray-400 hover:text-gray-700">
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
@@ -200,14 +209,14 @@
     <!-- USERNAME -->
     <div class="mb-4">
 
-        <label class="block text-sm font-medium mb-2">
+        <label class="block text-sm font-medium mb-2 text-gray-700">
             Username
         </label>
 
         <input
             type="text"
             name="userName"
-            class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg"
+            class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-700"
             placeholder="Masukkan username"
             required
         >
@@ -217,30 +226,36 @@
     <!-- CONTENT -->
     <div class="mb-4">
 
-        <label class="block text-sm font-medium mb-2">
+        <label class="block text-sm font-medium mb-2 text-gray-700">
             Ulasan
         </label>
 
         <textarea
             name="content"
+            id="manualContentInput"
             rows="4"
-            class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg"
-            placeholder="Masukkan ulasan pengguna"
-            required
+            maxlength="150"
+            oninput="updateManualCharCount()"
+            class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-700"
+            placeholder="Masukkan ulasan pengguna (maks. 150 karakter)"
         ></textarea>
+
+        <p class="text-xs text-gray-500 mt-1 text-right">
+            <span id="manualCharCount">0</span>/150 karakter
+        </p>
 
     </div>
 
     <!-- SCORE -->
     <div class="mb-4">
 
-        <label class="block text-sm font-medium mb-2">
+        <label class="block text-sm font-medium mb-2 text-gray-700">
             Score
         </label>
 
         <select
             name="score"
-            class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg"
+            class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-700"
             required
         >
             <option value="">Pilih Score</option>
@@ -255,7 +270,7 @@
 
     <button
         type="submit"
-        class="w-full py-3 bg-blue-600 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+        class="w-full py-3 bg-blue-600 rounded-lg font-semibold text-white hover:bg-blue-700 transition-colors"
     >
         Analisis Sentimen
     </button>
@@ -273,6 +288,20 @@
         document.getElementById('uploadModal').classList.add('hidden');
         document.getElementById('uploadModal').classList.remove('flex');
     }
+    function validateDatasetFileSize() {
+        const input = document.getElementById('datasetFileInput');
+        const errorBox = document.getElementById('datasetFileSizeError');
+        const submitBtn = document.getElementById('uploadDatasetSubmitBtn');
+        const maxSizeBytes = 15 * 1024 * 1024; // 15 MB
+
+        if (input.files.length > 0 && input.files[0].size > maxSizeBytes) {
+            errorBox.classList.remove('hidden');
+            submitBtn.disabled = true;
+        } else {
+            errorBox.classList.add('hidden');
+            submitBtn.disabled = false;
+        }
+    }
     function openManualModal() {
         document.getElementById('manualModal').classList.remove('hidden');
         document.getElementById('manualModal').classList.add('flex');
@@ -280,6 +309,13 @@
     function closeManualModal() {
         document.getElementById('manualModal').classList.add('hidden');
         document.getElementById('manualModal').classList.remove('flex');
+    }
+    function updateManualCharCount() {
+        const input = document.getElementById('manualContentInput');
+        const counter = document.getElementById('manualCharCount');
+        if (input && counter) {
+            counter.textContent = input.value.length;
+        }
     }
     window.onclick = function(event) {
         if (event.target === document.getElementById('uploadModal')) closeUploadModal();

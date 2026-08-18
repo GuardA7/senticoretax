@@ -131,35 +131,38 @@ class EucsController extends Controller
         }
 
         // =========================
-        // RATA RATA %
+        // RATA RATA SKOR (SKALA 1 - 5)
+        // Setiap dimensi terdiri dari 5 item pernyataan,
+        // masing-masing diisi dengan skala Likert 1 - 5.
+        // Rata-rata dimensi = total skor / (jumlah responden x jumlah item)
         // =========================
         $contentAvg =
             round(
-                ($content / ($total * 25)) * 100,
+                $content / ($total * 5),
                 2
             );
 
         $accuracyAvg =
             round(
-                ($accuracy / ($total * 25)) * 100,
+                $accuracy / ($total * 5),
                 2
             );
 
         $formatAvg =
             round(
-                ($format / ($total * 25)) * 100,
+                $format / ($total * 5),
                 2
             );
 
         $easeAvg =
             round(
-                ($ease / ($total * 25)) * 100,
+                $ease / ($total * 5),
                 2
             );
 
         $timeAvg =
             round(
-                ($time / ($total * 25)) * 100,
+                $time / ($total * 5),
                 2
             );
 

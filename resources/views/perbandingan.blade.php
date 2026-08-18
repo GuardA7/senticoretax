@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h2 class="text-3xl font-bold mb-6">
+<h2 class="text-3xl font-bold mb-6 text-slate-800">
     Perbandingan Performa Model
 </h2>
 
@@ -13,57 +13,65 @@
     <!-- ========================= -->
     <!-- NAIVE BAYES -->
     <!-- ========================= -->
-    <div class="bg-gray-800 rounded-2xl border border-gray-700 p-6">
+    <div class="bg-white rounded-2xl border border-blue-100 p-6 premium-shadow">
 
-        <h3 class="text-xl font-bold text-blue-400 mb-5">
-            Naïve Bayes
-        </h3>
+        <div class="flex items-center gap-3 mb-5">
+
+            <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
+                <span class="material-symbols-outlined text-blue-700 text-xl">psychology</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-blue-700">
+                Naïve Bayes
+            </h3>
+
+        </div>
 
         <div class="grid grid-cols-2 gap-4">
 
-            <div class="text-center p-4 bg-gray-700/40 rounded-xl">
+            <div class="text-center p-4 bg-blue-50 rounded-xl">
 
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-slate-500">
                     Accuracy
                 </p>
 
-                <p class="text-2xl font-bold">
+                <p class="text-2xl font-bold text-slate-800">
                     {{ number_format($naiveBayes['accuracy'], 2) }}%
                 </p>
 
             </div>
 
-            <div class="text-center p-4 bg-gray-700/40 rounded-xl">
+            <div class="text-center p-4 bg-cyan-50 rounded-xl">
 
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-slate-500">
                     Precision
                 </p>
 
-                <p class="text-2xl font-bold text-cyan-400">
+                <p class="text-2xl font-bold text-cyan-700">
                     {{ number_format($naiveBayes['precision'], 2) }}%
                 </p>
 
             </div>
 
-            <div class="text-center p-4 bg-gray-700/40 rounded-xl">
+            <div class="text-center p-4 bg-amber-50 rounded-xl">
 
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-slate-500">
                     Recall
                 </p>
 
-                <p class="text-2xl font-bold text-yellow-400">
+                <p class="text-2xl font-bold text-amber-600">
                     {{ number_format($naiveBayes['recall'], 2) }}%
                 </p>
 
             </div>
 
-            <div class="text-center p-4 bg-gray-700/40 rounded-xl">
+            <div class="text-center p-4 bg-pink-50 rounded-xl">
 
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-slate-500">
                     F1-Score
                 </p>
 
-                <p class="text-2xl font-bold text-pink-400">
+                <p class="text-2xl font-bold text-pink-600">
                     {{ number_format($naiveBayes['f1_score'], 2) }}%
                 </p>
 
@@ -76,57 +84,65 @@
     <!-- ========================= -->
     <!-- SVM -->
     <!-- ========================= -->
-    <div class="bg-gray-800 rounded-2xl border border-gray-700 p-6">
+    <div class="bg-white rounded-2xl border border-blue-100 p-6 premium-shadow">
 
-        <h3 class="text-xl font-bold text-indigo-400 mb-5">
-            SVM
-        </h3>
+        <div class="flex items-center gap-3 mb-5">
+
+            <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
+                <span class="material-symbols-outlined text-amber-600 text-xl">insights</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-amber-600">
+                SVM
+            </h3>
+
+        </div>
 
         <div class="grid grid-cols-2 gap-4">
 
-            <div class="text-center p-4 bg-gray-700/40 rounded-xl">
+            <div class="text-center p-4 bg-blue-50 rounded-xl">
 
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-slate-500">
                     Accuracy
                 </p>
 
-                <p class="text-2xl font-bold">
+                <p class="text-2xl font-bold text-slate-800">
                     {{ number_format($svm['accuracy'], 2) }}%
                 </p>
 
             </div>
 
-            <div class="text-center p-4 bg-gray-700/40 rounded-xl">
+            <div class="text-center p-4 bg-cyan-50 rounded-xl">
 
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-slate-500">
                     Precision
                 </p>
 
-                <p class="text-2xl font-bold text-cyan-400">
+                <p class="text-2xl font-bold text-cyan-700">
                     {{ number_format($svm['precision'], 2) }}%
                 </p>
 
             </div>
 
-            <div class="text-center p-4 bg-gray-700/40 rounded-xl">
+            <div class="text-center p-4 bg-amber-50 rounded-xl">
 
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-slate-500">
                     Recall
                 </p>
 
-                <p class="text-2xl font-bold text-yellow-400">
+                <p class="text-2xl font-bold text-amber-600">
                     {{ number_format($svm['recall'], 2) }}%
                 </p>
 
             </div>
 
-            <div class="text-center p-4 bg-gray-700/40 rounded-xl">
+            <div class="text-center p-4 bg-pink-50 rounded-xl">
 
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-slate-500">
                     F1-Score
                 </p>
 
-                <p class="text-2xl font-bold text-pink-400">
+                <p class="text-2xl font-bold text-pink-600">
                     {{ number_format($svm['f1_score'], 2) }}%
                 </p>
 
@@ -141,7 +157,7 @@
 <!-- ========================= -->
 <!-- CHART -->
 <!-- ========================= -->
-<div class="bg-gray-800 rounded-2xl border border-gray-700 p-6">
+<div class="bg-white rounded-2xl border border-blue-100 p-6 premium-shadow">
 
     <canvas id="comparisonChart" height="120"></canvas>
 
@@ -162,9 +178,9 @@
 
     @endphp
 
-    <div class="mt-6 p-5 bg-blue-900/20 rounded-xl border border-blue-800">
+    <div class="mt-6 p-5 bg-gradient-to-r from-blue-50 to-amber-50 rounded-xl border border-blue-100">
 
-        <p class="text-sm">
+        <p class="text-sm text-slate-700">
 
             <span class="font-semibold">
                 📊 Kesimpulan:
@@ -172,14 +188,14 @@
 
             Model
 
-            <strong class="text-lg">
+            <strong class="text-lg text-slate-800">
                 {{ $terbaik }}
             </strong>
 
             memiliki performa terbaik
             dengan selisih akurasi
 
-            <strong>
+            <strong class="text-slate-800">
                 {{ number_format($selisih, 2) }}%
             </strong>
 
@@ -232,10 +248,13 @@ new Chart(
                     ],
 
                     backgroundColor:
-                        'rgba(59,130,246,0.2)',
+                        'rgba(37,99,235,0.15)',
 
                     borderColor:
-                        '#3b82f6',
+                        '#1e3a5f',
+
+                    pointBackgroundColor:
+                        '#1e3a5f',
 
                     borderWidth: 2
 
@@ -258,10 +277,13 @@ new Chart(
                     ],
 
                     backgroundColor:
-                        'rgba(99,102,241,0.2)',
+                        'rgba(245,196,81,0.25)',
 
                     borderColor:
-                        '#6366f1',
+                        '#d97706',
+
+                    pointBackgroundColor:
+                        '#d97706',
 
                     borderWidth: 2
 
@@ -284,9 +306,45 @@ new Chart(
 
                     max: 100,
 
+                    angleLines: {
+
+                        color: '#e2e8f0'
+
+                    },
+
+                    grid: {
+
+                        color: '#e2e8f0'
+
+                    },
+
+                    pointLabels: {
+
+                        color: '#475569'
+
+                    },
+
                     ticks: {
 
-                        stepSize: 20
+                        stepSize: 20,
+
+                        color: '#94a3b8',
+
+                        backdropColor: 'transparent'
+
+                    }
+
+                }
+
+            },
+
+            plugins: {
+
+                legend: {
+
+                    labels: {
+
+                        color: '#475569'
 
                     }
 
