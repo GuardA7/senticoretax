@@ -191,17 +191,17 @@ class SentimentController extends Controller
         // (supaya ikut terhitung di statistik Dashboard)
         // 2 baris terpisah: satu untuk hasil NB, satu untuk hasil SVM
         // =========================
-        $this->appendToDataset(
-            'Manual (NB)',
-            $content,
-            $nbResult
-        );
+        // $this->appendToDataset(
+//     'Manual (NB)',
+//     $content,
+//     $nbResult
+// );
 
-        $this->appendToDataset(
-            'Manual (SVM)',
-            $content,
-            $svmResult
-        );
+// $this->appendToDataset(
+//     'Manual (SVM)',
+//     $content,
+//     $svmResult
+// );
 
         // =========================
         // RESPON UNTUK REQUEST AJAX

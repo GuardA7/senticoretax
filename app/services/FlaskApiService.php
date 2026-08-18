@@ -19,17 +19,22 @@ class FlaskApiService
 
     public function predictNB($text)
     {
+        $url = $this->baseUrl . '/predict/nb';
+
+        Log::info('CALLING FLASK NB', [
+            'url' => $url,
+            'content' => $text,
+        ]);
+
         $response = Http::timeout(120)
             ->acceptJson()
-            ->post(
-                $this->baseUrl . '/predict/nb',
-                [
-                    'content' => $text
-                ]
-            );
+            ->asJson()
+            ->post($url, [
+                'content' => $text
+            ]);
 
         Log::info('FLASK NB RESPONSE', [
-            'url' => $this->baseUrl . '/predict/nb',
+            'url' => $url,
             'status' => $response->status(),
             'body' => $response->body(),
         ]);
@@ -41,17 +46,22 @@ class FlaskApiService
 
     public function predictSVM($text)
     {
+        $url = $this->baseUrl . '/predict/svm';
+
+        Log::info('CALLING FLASK SVM', [
+            'url' => $url,
+            'content' => $text,
+        ]);
+
         $response = Http::timeout(120)
             ->acceptJson()
-            ->post(
-                $this->baseUrl . '/predict/svm',
-                [
-                    'content' => $text
-                ]
-            );
+            ->asJson()
+            ->post($url, [
+                'content' => $text
+            ]);
 
         Log::info('FLASK SVM RESPONSE', [
-            'url' => $this->baseUrl . '/predict/svm',
+            'url' => $url,
             'status' => $response->status(),
             'body' => $response->body(),
         ]);
