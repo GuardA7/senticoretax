@@ -17,7 +17,7 @@ class EvaluationController extends Controller
         // FILE AKURASI
         // =========================
         $path =
-            'python-api/models/accuracy.json';
+            'C:/senticoretax/python-api/models/accuracy.json';
 
         // =========================
         // CEK FILE

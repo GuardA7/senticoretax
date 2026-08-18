@@ -9,14 +9,14 @@ use App\Services\FlaskApiService;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-class   SentimentController extends Controller
+class SentimentController extends Controller
 {
     // =========================
     // PATH DATASET
     // (disamakan dengan yang dibaca DashboardController)
     // =========================
     private $datasetPath =
-        'python-api/dataset/dataset.xlsx';
+        'C:/senticoretax/python-api/dataset/dataset.xlsx';
 
     // =========================
     // NAIVE BAYES
@@ -30,7 +30,7 @@ class   SentimentController extends Controller
         $results = [];
 
         $accuracyPath =
-            'python-api/models/accuracy.json';
+            'C:/senticoretax/python-api/models/accuracy.json';
 
         if (file_exists($accuracyPath)) {
 
@@ -89,7 +89,7 @@ class   SentimentController extends Controller
         $results = [];
 
         $accuracyPath =
-            'python-api/models/accuracy.json';
+            'C:/senticoretax/python-api/models/accuracy.json';
 
         if (file_exists($accuracyPath)) {
 

@@ -14,12 +14,13 @@ class FlaskApiService
     // =========================
     public function predictNB($text)
     {
-        $response = Http::post(
-            $this->baseUrl . '/predict/nb',
-            [
-                'content' => $text
-            ]
-        );
+        $response = Http::withoutVerifying()
+    ->post(
+        $this->baseUrl . '/predict/nb',
+        [
+            'content' => $text
+        ]
+    );
 
         return $response->json();
     }
@@ -29,12 +30,13 @@ class FlaskApiService
     // =========================
     public function predictSVM($text)
     {
-        $response = Http::post(
-            $this->baseUrl . '/predict/svm',
-            [
-                'content' => $text
-            ]
-        );
+       $response = Http::withoutVerifying()
+    ->post(
+        $this->baseUrl . '/predict/svm',
+        [
+            'content' => $text
+        ]
+    );
 
         return $response->json();
     }
