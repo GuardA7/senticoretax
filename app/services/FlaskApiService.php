@@ -14,7 +14,7 @@ class FlaskApiService
     // =========================
     public function predictNB($text)
     {
-        $response = Http::withoutVerifying()
+        $response = Https::withoutVerifying()
     ->post(
         $this->baseUrl . '/predict/nb',
         [
@@ -30,7 +30,7 @@ class FlaskApiService
     // =========================
     public function predictSVM($text)
     {
-       $response = Http::withoutVerifying()
+       $response = Https::withoutVerifying()
     ->post(
         $this->baseUrl . '/predict/svm',
         [
