@@ -202,7 +202,10 @@
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
-        <form action="{{ route('manual.input') }}" method="POST">
+        <form
+    action="{{ route('manual.input') }}"
+    method="POST"
+>
 
     @csrf
 
